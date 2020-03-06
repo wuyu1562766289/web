@@ -19,6 +19,8 @@
 import WInput from "./WInput.vue";
 import WFormItem from "./WFormItem.vue";
 import WForm from "./WForm.vue";
+import Notice from "@/components/notice";
+import create from "@/utils/create.js";
 
 export default {
   components: {
@@ -40,12 +42,16 @@ export default {
   },
   methods: {
     onLogin() {
+      let notice;
+
       this.$refs.loginForm.validate(isvalid => {
-        if(isvalid) {
-          alert('登录！！！');
-        } else {
-          alert('有错！！！');
-        }
+        notice = create(Notice, {
+          title: "提示信息",
+          msg: isvalid ? "登录！" : "有错！",
+          time: 5000
+        });
+
+        notice.show();
       })
     }
   },
