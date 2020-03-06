@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="../utils/vue.min.js"></script>
+
+<body>
+  <div id="app">
+    <child @msg="myevent"></child>
+    {{msg}}
+  </div>
+  <script>
+    Vue.component("child", {
+      template: `
+        <div>
+          <button @click="myevent">发送</button>
+        </div>        
+      `,
+      data() {
+        return {
+          msg: '爸爸收到了吗？'
+        }
+      },
+      methods: {
+        myevent() {
+          this.$emit('msg', this.msg);
+        }
+      },
+    })
+
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          msg: ""
+        }
+      },
+      methods: {
+        myevent(ev) {
+          this.msg = ev;
+          console.log(ev);          
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

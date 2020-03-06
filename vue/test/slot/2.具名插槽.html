@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../utils/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <child>
+      <div slot="a">aaa</div>
+      <div slot="b">bbb</div>
+    </child>
+  </div>
+  <script>
+    Vue.component('child', {
+      template: `
+        <div>
+          <slot name="a"></slot>
+            child
+          <slot name="b"></slot> 
+          <slot name="a"></slot>
+        </div>
+      `
+    })
+    new Vue({
+      el: "#app"
+    })
+  </script>
+</body>
+</html>

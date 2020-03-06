@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../utils/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <child>
+      <ul>
+        <li v-for="data in dataList">
+          {{data}}
+        </li>
+      </ul>
+    </child>
+  </div>
+  <script>
+    Vue.component('child', {
+      template: `
+        <div>
+          child
+          <slot></slot>
+        </div>
+      `
+    })
+
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          dataList: ['111', '222', '333']
+        }
+      },
+    })
+  </script>
+</body>
+</html>

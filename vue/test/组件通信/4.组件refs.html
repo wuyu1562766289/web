@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="../utils/vue.min.js"></script>
+<body>
+  <div id="app">
+    <input type="text" ref="reference">
+    <button @click='getData'>click</button>
+    <child ref="child"></child>
+  </div>
+  <script>
+    Vue.component('child', {
+      template: `
+        <div>{{childname}}</div>
+      `,
+      data() {
+        return {
+          childname: '我是子组件'
+        }
+      },
+      methods: {
+        test(a) {
+          console.log(a + '我是子组件里的方法');
+          
+        }
+      },
+    })
+
+    new Vue({
+      el: '#app',
+      methods: {
+        getData() {
+          console.log(this.$refs.reference.value);
+          console.log(this.$refs.child.childname);
+          this.$refs.child.test('hello ');
+        }
+      },
+    })
+  </script>
+</body>
+</html>

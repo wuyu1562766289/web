@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="../utils/vue.min.js"></script>
+<body>
+  <div id="app">
+    <weixinauth></weixinauth>
+    <weixinuser></weixinuser>
+  </div>
+
+  <script>
+    // 中央事件总线
+    var bus = new Vue();
+
+    Vue.component('weixinauth', {
+      template: `
+        <div style="background: yellow;">
+          <p>我是微信公众号作者</p>
+          <input type='text' ref="auth"></input>
+          <button @click=sendMsg>发布</button>
+        </div>
+      `,
+      methods: {
+        sendMsg() {
+          bus.$emit('weixinmessage', this.$refs.auth.value);          
+        }
+      },
+    });
+
+    Vue.component('weixinuser', {
+      template: `
+        <div style="background: pink;">
+          <p>我是微信用户</p>
+          <h2>{{msg}}</h2>
+        </div>
+      `,
+      data() {
+        return {
+          msg: ''
+        }
+      },
+      mounted() {
+        bus.$on('weixinmessage', msg => {
+          this.msg = msg;
+        })
+      },
+    })
+
+    new Vue({
+      el: '#app'
+    })
+  </script>
+</body>
+</html>

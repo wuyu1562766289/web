@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="../utils/vue.min.js"></script>
+<body>
+  <div id="app">
+    {{msg}}
+    <navbar myname="wangxing" :myshow="false"></navbar>
+    <navbar myname="shouye" :myshow="true"></navbar>
+    <navbar :myname="parentname" :myshow="true"></navbar>
+  </div>
+  <script>
+    Vue.component("navbar", {
+      template: `<div>
+          <button>返回</button>
+            {{myname}}
+          <button v-show="myshow">首页</button>
+        </div>`,
+        data() {
+          return {
+          
+          }
+        },
+        props: ["myname", "myshow"]
+    })
+
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          msg: 'hello',
+          parentname: '我是父组件'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

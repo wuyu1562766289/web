@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../utils/vue.min.js"></script>
+  <style>
+    .test-enter-active, .test-leave-active {
+      transition: all 1.5s;
+    }
+    .test-enter, .test-leave-to {
+      opacity: 0;
+      transform: translateX(200px);
+    }
+
+    .hello-enter-active {
+      animation: bounce-in .5s;
+    }
+    .hello-leave-active {
+      animation: bounce-in .5s reverse;
+    }
+    @keyframes bounce-in {
+      0% {
+        opacity: 0;
+        transform: translateX(200px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="isShow=!isShow">click</button>
+    <!-- 同时执行 -->
+    <transition name="test">
+      <div v-if="isShow" key="1">11111111111</div>
+      <div v-else key="2">22222222222</div>
+    </transition>
+        
+    <!-- 先执行其中一个，结束后再执行另外一个 -->
+    <transition name="test" mode="out-in">
+      <div v-if="isShow" key="1">3333333333</div>
+      <div v-else key="2">444444444444</div>
+    </transition>
+
+    <!-- 先执行其中一个，结束后再执行另外一个 -->
+    <transition name="test" mode="in-out">
+      <div v-if="isShow" key="1">5555555555</div>
+      <div v-else key="2">6666666666</div>
+    </transition>
+  </div>
+  <script>
+
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          isShow: true
+        }
+      },
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="../utils/vue.min.js"></script>
+<body>
+  <div id="app">
+    <sidal @myevent="handelEvent"></sidal>
+    <navbar v-show="isShow"></navbar>
+  </div>
+
+  <script>
+    Vue.component('sidal', {
+      template: `
+        <div>
+          <button @click="handelClick">click</button>  
+        </div>
+      `,
+      methods: {
+        handelClick() {
+          this.$emit("myevent");
+        }
+      },
+    })
+    Vue.component('navbar', {
+      template: `
+        <div style="width: 200px; background: yellow;">
+          <ul>
+            <li>111</li>
+            <li>111</li>
+            <li>111</li>
+          </ul>
+        </div>
+      `
+    })
+
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          isShow: true
+        }
+      },
+      methods: {
+        handelEvent() {
+          this.isShow = !this.isShow;
+        }
+      },
+    })
+  </script>
+</body>
+</html>
