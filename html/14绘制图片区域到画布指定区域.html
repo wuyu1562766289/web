@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            canvas {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height="600"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+            let img = document.createElement("img");
+                img.src = "../img/qx.jpg";
+
+            img.onload = function () {
+                /*
+                    参数说明：
+                        1.图片对象；
+                        2.开始绘制图片的起始x；
+                        3.开始绘制图片的起始y；
+                        4.截取图片的width；
+                        5.截取图片的height；
+                        6.画布中矩形区域的x；
+                        7.画布中矩形区域的y；
+                        8.矩形区域的width；
+                        9.矩形区域的height；
+                 */
+                oCtx.drawImage(img, 920, 200, 600, 600, 150, 150, 200, 200);
+            }
+        </script>
+    </body>
+</html>

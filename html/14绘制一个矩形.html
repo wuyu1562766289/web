@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            canvas {
+                border: 1px solid;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+            /* // 绘制一个矩形
+            oCtx.rect(100, 100, 200, 200);
+            oCtx.stroke();
+
+            // 清除画布
+            oCtx.clearRect(0, 0, 300, 300); */
+
+            /*
+              strokeRect(x,y,width,height):绘制一个描边矩形；
+              fillRect(x,y,width,height):绘制一个填充矩形；
+              clearRect(x,y,width,height):清除
+             */
+
+            let x = 0;
+            let i = 1;
+            let step = 5;
+
+            setInterval(function () {
+                oCtx.clearRect(0, 0, oCanvas.width, oCanvas.height);
+                oCtx.fillRect(x, 100, 50, 200);
+
+                x += i*step;
+                if(oCanvas.width - 50 < x) {
+                    i = -1;
+                } else if(x < 0) {
+                    i = 1;
+                }
+                //x = x + i*100;
+            }, 100);
+        </script>
+    </body>
+</html>

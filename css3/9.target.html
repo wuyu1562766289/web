@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            /* 被锚链接指向的时候会触发该选择器 */
+            p:target {
+                color: red;
+            }
+
+            /* 被鼠标选中的时候触发该选择器 */
+            p::selection {
+                color: red;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p id="test">文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <p>文字</p>
+        <a href="#test">选中第10行</a>
+    </body>
+</html>

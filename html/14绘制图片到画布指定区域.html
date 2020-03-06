@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            canvas {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height="500"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+            let img = document.createElement("img");
+                img.src = "../img/qx.jpg";
+
+            img.onload = function () {
+                // (图片对象，矩形起始x，矩形起始y，指定区域width，指定区域hight)
+                oCtx.drawImage(img, 100, 100, 400, 300);
+            }
+        </script>
+    </body>
+</html>

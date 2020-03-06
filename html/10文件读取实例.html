@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <input type="file" name="" value="">
+        <br>
+        <img alt="">
+    </body>
+    <script type="text/javascript">
+        let oInput = document.querySelector('input');
+
+        oInput.onchange = function() {
+            let oFile = this.files[0];
+
+            let oRead = new FileReader();
+
+            oRead.readAsDataURL(oFile);
+
+            oRead.onload = function() {
+                //let oImg = document.createElement('img');
+                //    oImg.src = oRead.result;
+                //document.body.appendChild(oImg);
+
+                let oImg = document.querySelector('img');
+                oImg.src = oRead.result;
+            }
+        }
+    </script>
+</html>

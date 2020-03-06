@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        * {
+            maggin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            padding: 10px;
+            border: 10px dashed blue;
+            background: pink url(../img/img.jpg);
+
+            /* 规定背景的绘制区域 */
+            /*
+                content-box: 背景被裁切到内容区域（将背景图片在内容区域显示）；
+                border-box: 背景被裁切到边框盒子位置（将背景图片在整个容器中显示）
+                padding-box: 背景被裁切到内边距区域（将背景图片在内边距区域（包括内容区域）显示）
+             */
+            background-clip: content-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

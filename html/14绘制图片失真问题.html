@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            canvas {
+                border: 1px solid red;
+            }
+
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height="600"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+            let img = document.createElement("img");
+                img.src = "../img/qx.jpg";
+
+            img.onload = function () {
+                let srcHight = img.height/img.width*400;
+
+                oCtx.drawImage(img, 100, 100, 400, srcHight);
+            }
+        </script>
+    </body>
+</html>

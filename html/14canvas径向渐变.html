@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+            
+            // 起始点x 起始点y 开始圆半径 结束点x 结束点y 结束圆半径
+            let bgc = oCtx.createRadialGradient(150, 150, 50, 150, 150, 100);
+            bgc.addColorStop(0, "yellow");
+            bgc.addColorStop(1, "red");
+
+            // 设置填充颜色
+            oCtx.fillStyle = bgc;
+            oCtx.moveTo(50, 50);
+            oCtx.lineTo(250, 50);
+            oCtx.lineTo(250, 250);
+            oCtx.lineTo(50, 250);
+            oCtx.closePath();
+
+            // 设置填充效果
+            oCtx.fill();
+        </script>
+    </body>
+</html>

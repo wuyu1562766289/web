@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height="400"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+            oCtx.moveTo(10, 100);
+            oCtx.lineTo(190, 100);
+            oCtx.lineTo(190, 300);
+            oCtx.lineTo(10, 300);
+            oCtx.closePath();
+            oCtx.stroke();
+
+            oCtx.beginPath();
+            oCtx.moveTo(210, 100);
+            oCtx.lineTo(210, 300);
+            oCtx.lineTo(390, 300);
+            oCtx.closePath();
+            oCtx.stroke();
+
+            oCtx.beginPath();
+            oCtx.moveTo(440, 100);
+            oCtx.lineTo(560, 100);
+            oCtx.lineTo(590, 300);
+            oCtx.lineTo(410, 300);
+            oCtx.closePath();
+            oCtx.stroke();
+        </script>
+    </body>
+</html>

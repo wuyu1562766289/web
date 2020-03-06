@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            /* 开始状态：元素在浏览器中的最初的显示效果 */
+            .box {
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                /* 设置过渡内容，即需要参与过渡的属性 */
+                transition-property: all;
+                /* 设置过渡执行时间 */
+                transition-duration: 1s;
+                /* 设置过渡延时执行时间 */
+                transition-delay: 1s;
+                /* 设置过渡的速度类型 */
+                transition-timing-function: linear;
+
+                /* 简写 */
+                transition: width 1s linear 1s;
+            }
+            .box:hover {
+                width: 400px;
+                height: 400px;
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+    </body>
+</html>

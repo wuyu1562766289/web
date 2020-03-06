@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./ajax_packaging.js"></script>
+    <script>
+        function submitFun(type) {
+            var oData = {
+                type: type,
+                url: type == "get" ? 'ajax_packaging_get.php' : 'ajax_packaging_post.php',
+                send: {
+                    name: 'wangxing',
+                    age: 18
+                },
+                callback: function(callbackData) {
+                    console.log(callbackData);                    
+                }
+            }
+
+            $.ajax(oData);
+        }
+    </script>
+</head>
+<body>
+    <input type="submit" value="get提交" onclick="submitFun('get')">
+    <input type="submit" value="post提交" onclick="submitFun('post')">
+</body>
+</html>

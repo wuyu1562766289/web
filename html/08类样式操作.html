@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            .bg {
+                width: 400px;
+                height: 100px;
+                background-color: yellow;
+            }
+        </style>
+        <script type="text/javascript">
+            window.onload = function () {
+                // 获取页面中的元素
+                let oDiv = document.querySelector('div');
+                let oAdd = document.querySelector('.add');
+                let oRemove = document.querySelector('.remove');
+                let oToggle = document.querySelector('.toggle');
+                let oContains = document.querySelector('.contains');
+
+                oAdd.onclick = () => {
+                    // 加的为类名
+                    // 添加
+                    oDiv.classList.add('bg');
+                };
+
+                oRemove.onclick = () => {
+                    // 移除类名
+                    oDiv.classList.remove('bg');
+                }
+
+                oToggle.onclick = () => {
+                    // 切换类名
+                    oDiv.classList.toggle('bg');
+                }
+
+                oContains.onclick = () => {
+                    // 是否包含类名
+                    console.log(oDiv.classList.contains('bg'));
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div>1</div>
+        <input type="button" name="btn1" value="添加类样式" class="add">
+        <input type="button" name="btn2" value="移除类样式" class="remove">
+        <input type="button" name="btn3" value="切换类样式" class="toggle">
+        <input type="button" name="btn4" value="检测类样式" class="contains">
+    </body>
+</html>

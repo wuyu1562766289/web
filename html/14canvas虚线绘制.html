@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height="300"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+            oCtx.moveTo(100, 50);
+            oCtx.lineTo(500, 50);
+            // 传一个数组，若只有2个相同的值可以简写为一个
+            oCtx.setLineDash([10, 10]);
+            oCtx.stroke();
+
+            oCtx.beginPath();
+            oCtx.moveTo(100, 100);
+            oCtx.lineTo(500, 100);
+            oCtx.setLineDash([10, 3]);
+            oCtx.stroke();
+
+            oCtx.beginPath();
+            oCtx.moveTo(100, 150);
+            oCtx.lineTo(500, 150);
+            oCtx.setLineDash([10, 3, 6]);
+            oCtx.stroke();
+        </script>
+    </body>
+</html>

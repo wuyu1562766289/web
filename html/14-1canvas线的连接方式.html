@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <canvas width="600" height="300"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector('canvas');
+            let oCtx = oCanvas.getContext('2d');
+
+            oCtx.moveTo(200, 200);
+            oCtx.lineTo(100, 150);
+            oCtx.lineTo(200, 100);
+            oCtx.lineWidth = "10";
+            oCtx.strokeStyle = "rgb(219, 89, 195)";
+            /* 连线方式：
+                1.round：带圆角；
+                2.bevel: 斜角；
+                3.miter：尖角（默认） */
+            // oCtx.lineJoin = "round";
+            // oCtx.lineJoin = "bevel";
+            oCtx.lineJoin = "miter";
+            oCtx.stroke();
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>aaa</div>
+    <div>bbb</div>
+    <div>ccc</div>
+    <span class="test">123</span>
+    <input type="text" id="inputId">
+</body>
+<script> 
+    (function(global){
+        function jQuery(selector) {
+            return new F(selector);
+        }
+        global.$ = global.jQuery = jQuery;
+
+        function F(selector) {
+            const elements = document.querySelectorAll(selector);
+            Array.from(elements).forEach((item, index) => {
+                this[index] = item;
+            });
+            this.length = elements.length;
+        }
+
+        F.prototype = {
+            constructor: F,
+            css(name, value) {
+                for(let i = 0; i < this.length; i++) {
+                    this[i].style[name] = value;
+                }
+            }
+        }
+    })(window);
+
+    $('div').css('color', 'red');
+    $('#inputId').css('background', 'pink');
+    $('.test').css('background', 'yellow');
+</script>
+</html>

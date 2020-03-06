@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height="300"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+            oCtx.moveTo(200, 100);
+            oCtx.lineTo(400, 100);
+            oCtx.lineTo(400, 250);
+            oCtx.lineTo(200, 250);
+            oCtx.closePath();
+            oCtx.stroke();
+        </script>
+    </body>
+</html>

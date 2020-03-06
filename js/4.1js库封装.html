@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</body>
+<script>
+    (function (global) {
+        function jQuery(selector) {
+            return new jQuery.prototype.init(selector);
+        }
+        global.$ = global.jQuery = jQuery;
+
+        jQuery.prototype = {
+            constructor: jQuery,
+            init: function (selector) {
+                let elements = document.querySelectorAll(selector);
+
+                Array.from(elements).forEach((item, index) => {
+                    this[index] = item;
+                });
+                this.length = elements.length;
+            },
+            css: function (name, value) {
+                Array.from(this).forEach(function (item) {
+                    item.style[name] = value;
+                });
+            }/* ,
+            extend: function(...arg) {
+                let aArguments = arg;
+                let aSource = {};
+
+                aArguments.forEach((item, index) => {
+                    if(index > 0) {
+                        aSource = {...item};
+                    }
+                })
+                return aSource;
+            } */
+        }
+
+        /* jQuery.extend = function (src, ...arg) {
+            let aArguments = arg;
+            aArguments.forEach((item, index) => {
+                src = { ...src, ...item };
+            });
+
+            return src;
+        } */
+
+        jQuery.extend = function (...src) {
+            let aDest = [...src];
+            let aTemp = [];
+
+            if (this === jQuery) {
+                aTemp = aDest[0];
+                aDest.splice(0, 1);
+            }
+            else {
+                aTemp = this;
+            }
+
+            aDest.forEach(function(item, index) {
+                Object.keys(item).forEach(key => {
+                    aTemp[key] = item[key];
+                });
+            })
+
+            return aTemp;
+        }
+
+        jQuery.prototype.extend = jQuery.extend;
+
+        jQuery.prototype.init.prototype = jQuery.prototype;
+    })(window);
+
+    $('div').css('backgroundColor', 'yellow');
+    $('div').css('color', 'pink');
+
+    let test = $.extend({}, { age: 13 }, { name: 'wangxing' }, { hight: 175 });
+    console.log(test);
+
+    $.prototype.extend({ move: function () { console.log(1) } });
+    $.prototype.move();
+
+</script>
+
+</html>

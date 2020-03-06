@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            .box {
+                width: 300px;
+                height: 300px;
+                padding: 10px;
+                border: 10px red dashed;
+                background: rgb(131, 252, 24) url(../img/img.jpg) no-repeat;
+                /* 规定背景图片的定位区域 */
+                background-origin: content-box;
+                /*
+                    默认盒子的背景图是在盒子的内边距左上角对齐设置。
+                    content-box: 背景图相对内容区域定位（以内容区域左上角为参照进行位置设置）；
+                    padding-box: 背景图相对内边距定位（默认值）；
+                    border-box: 背景图相对边框定位（以边框左上角为参照进行位置定位）
+                 */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+
+        </div>
+    </body>
+</html>

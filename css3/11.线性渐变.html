@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            /*
+                线性渐变：
+                    1.渐变方向；
+                    2.开始颜色和结束颜色；
+                    3.渐变的范围；
+
+             */
+            .line {
+                height: 600px;
+                width: 600px;
+                background-image: linear-gradient(
+                    /*
+                      表示方向：
+                          1.to + right | top | bottom |left;
+                          2.通过角度表示一个方向：
+                              0deg[从下到上]；
+                              90deg[从左向右]；
+                              135deg[从左上角到右下角]
+                     */
+                    /* to right, */
+                    135deg,
+                    red,
+                    yellow
+                );
+            }
+
+            .line1 {
+                height: 100px;
+                background-image: linear-gradient(
+                   /* to right, */
+                   135deg,
+                   red 20%,
+                   blue 20%,
+                   blue 40%,
+                   red 40%,
+                   red 60%,
+                   blue 60%,
+                   blue 80%,
+                   red 80%
+                );
+                background-size: 200px 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="line"></div>
+        <div class="line1"></div>
+    </body>
+</html>

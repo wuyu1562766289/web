@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+
+    </body>
+    <script type="text/javascript">
+        Function.prototype._bind = function (src) {
+            // 匿名函数方法
+            var that = this;
+            return function () {
+                that.call(src);
+            };
+
+            // 箭头函数方法
+            /* return () => {
+                this.call(src);
+            }; */
+        }
+
+        function fn() {
+            console.log(this);
+        }
+        var f1 = fn._bind({name: 'wangxing'});
+        f1();
+    </script>
+</html>

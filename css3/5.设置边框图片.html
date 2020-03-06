@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            .box {
+                width: 347px;
+                height: 300px;
+                border: 30px solid;
+                margin: 50px auto;
+
+                /* 设置边框图片 */
+                border-image-source: url("../img/2.png");
+                /* 边框图片裁切：不需要带单位 */
+                border-image-slice: 20 20 20 20;
+
+                /* 设置边框图片的平铺方式 */
+                /* 拉伸显示 */
+                border-image-repeat: stretch;
+                /* 浏览器会自动处理一些小细节的显示（推荐使用） */
+                border-image-repeat: round;
+                /* 自动平铺显示 */
+                border-image-repeat: repeat;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+    </body>
+</html>

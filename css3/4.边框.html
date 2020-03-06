@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            .box {
+                width: 200px;
+                height: 50px;
+                border: 1px solid red;
+
+                /* 边框设置圆角 */
+                border-radius: 10px;
+
+                /* 边框设置阴影:(inset表示内阴影)
+                        参数一：阴影在水平方向的偏移量（正数向右，负数向左）
+                        参数二：阴影在垂直方向的偏移量（正数向下，负数向上）
+                        参数三：阴影的模糊度（不能设置为负数）
+                        参数四：阴影的颜色
+                    可以设置多个阴影效果，中间用“，”隔开；
+                 */
+                box-shadow: inset 0px 0px 10px yellow,
+                            10px -10px 10px blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+    </body>
+</html>

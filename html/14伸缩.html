@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+            // (沿着x轴和y轴缩放)x、y为倍数   例如：0.5 1
+            oCtx.scale(0.5, 1);
+            oCtx.arc(150, 150, 100, 0, 2*Math.PI);
+            oCtx.stroke();
+        </script>
+    </body>
+</html>

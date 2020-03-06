@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            // 获取当前网络状态（返回一个布尔值）
+            var stale = window.navigator.onLine;
+            if(stale)
+            {
+                alert('当前处于联网状态！');
+            }
+            else
+            {
+                alert('网络已断开！');
+            }
+
+            // 网络连接上的时候触发
+            window.ononline = function() {
+                alert('当前网络处于连接状态');
+            }
+            // 网络断开的时候触发
+            window.onoffline = function() {
+                alert('当前网络已断开');
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <div class="test" data-hello="123" data-hello-world="456">
+
+        </div>
+    </body>
+    <script type="text/javascript">
+        // 获取自定义属性值
+        let list = document.querySelector('.test').dataset;
+            list.age = 20;    // 会自动在属性中加入data-age
+            list.tempName = 'wangxing';    // data-temp-name
+
+        // 获取自定义属性值时，不需要加data-；若自定义属性名中带“-”，浏览器自动转换为驼峰命名
+        console.log(list.hello);    // 123
+
+        console.log(list);    // {hello: "123", helloWorld: "456"}
+    </script>
+</html>

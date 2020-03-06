@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+            oCtx.rotate(Math.PI/6);
+            /* oCtx.arc(100, 100, 100, 0, Math.PI);
+            oCtx.stroke(); */
+            oCtx.fillRect(150, 150, 100, 100);
+        </script>
+    </body>
+</html>

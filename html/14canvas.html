@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            canvas {
+                border: 1px solid rgb(65, 229, 251);
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 默认画布大小：300*150 -->
+        <!-- 必须在标签内部改变大小，不能通过css改变大小（会失真） -->
+        <canvas width="600" height="300"></canvas>
+        <script type="text/javascript">
+            // 获取canvas画布对象
+            var canvas = document.querySelector('canvas');
+            // 获取绘图上下文
+            var ctx = canvas.getContext("2d");
+
+            /* 绘图步骤：
+                1.先落笔（找到落笔点的坐标）；
+                2.连线；
+                3.描边； */
+
+            // 先落笔
+            ctx.moveTo(100, 100);
+            // 连线
+            ctx.lineTo(300, 100);
+            // 描边(出现一次stroke渲染一次，若出现多个则会进行多次渲染)
+            ctx.stroke();
+            /* 解决画布重绘问题：
+                1.设置一次描边；
+                2.开启新的图层； */
+            // 开启新的图层
+            ctx.beginPath();
+
+            // 带颜色的线
+            ctx.moveTo(100, 150);
+            ctx.lineTo(300, 150);
+            ctx.strokeStyle = 'red';    // 红色的线
+            ctx.lineWidth = "20";       // 设置线宽（不带单位）
+            ctx.stroke();
+        </script>
+    </body>
+</html>

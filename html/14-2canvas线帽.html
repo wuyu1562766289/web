@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <canvas width="600" height="300"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext('2d');
+
+            oCtx.moveTo(20, 100);
+            oCtx.lineTo(100, 100);
+            //oCtx.lineTo(200, 200);
+            oCtx.lineWidth = "20";
+            oCtx.strokeStyle = "pink";
+            /* 线帽：线两端的结束方式
+                1.butt:平切（默认）；
+                2.round：圆角；
+                3.square： 方形；*/
+            // oCtx.lineCap = "round";
+            // oCtx.lineCap = "square";
+            oCtx.lineCap = "butt";
+            oCtx.stroke();
+
+            oCtx.beginPath();
+            oCtx.moveTo(150, 100);
+            oCtx.lineTo(250, 100);
+            oCtx.lineWidth = "20";
+            oCtx.strokeStyle = "blue";
+            oCtx.lineCap = "round";
+            oCtx.stroke();
+
+            oCtx.beginPath();
+            oCtx.moveTo(300, 100);
+            oCtx.lineTo(400, 100);
+            oCtx.lineWidth = "20";
+            oCtx.strokeStyle = "rgb(238, 50, 180)";
+            oCtx.lineCap = "square";
+            oCtx.stroke();
+
+        </script>
+    </body>
+</html>

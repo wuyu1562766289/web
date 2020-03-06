@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            .one {
+                width: 450px;
+                height: 450px;
+                border: red 1px solid;
+                margin: 0 auto;
+
+                /* 透视：在网页中实现近大远小的效果（取值无界限，建议在600-1000之间） */
+                perspective: 1000px;
+            }
+            .box {
+                width: 50px;
+                height: 50px;
+                background-color: red;
+                margin: 200px;
+            }
+
+            .one:hover .box{
+                /* 位移 */
+                /* transform: translateY(200px); */
+                /* transform: translateX(200px); */
+                /* transform: translateZ(100px); */   /* 近大远小的效果 */
+
+                /* 旋转 */
+                /* transform: rotateX(60deg) rotateY(60deg) rotateZ(30deg); */
+
+                /* 缩放 */
+                /* transform: scaleX(0.5) scaleY(0.5) scaleZ(0.5); */
+
+                /* 倾斜 */
+                transform: skewX(30deg) skewY(30deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="one">
+            <div class="box"></div>
+        </div>
+    </body>
+</html>

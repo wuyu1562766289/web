@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <input type="file" name="" value="">
+    </body>
+    <script type="text/javascript">
+        let oInput = document.querySelector('input');
+
+        oInput.onchange = function () {
+            // 获取到文件
+            let ofile = this.files[0];
+
+            // 开始读取，创建读取器
+            let reader = new FileReader();
+
+            // 开始读取
+            // readAsBinaryString:将文件读取为二进制编码
+            // readAsText:将文件读取为文本
+            // readAsDataURL:将文件读取为DataURL
+            reader.readAsText(ofile);
+
+            // 获取读取结果
+            // 当文件读取完成后，才可以获取文件信息内容
+            // onabort:中断时触发
+            // onerror:出错时触发
+            // onloadend:读取完成触发，无论成功或失败
+            // onloadStart:
+            reader.onload = function() {
+                // 读取结果返回在result中
+                console.log(reader.result);
+            }
+        }
+    </script>
+</html>

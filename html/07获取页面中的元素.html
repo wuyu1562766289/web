@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <ul>
+            <li>
+                <span>
+                    <p>1</p>
+                </span>
+            </li>
+            <li>
+                <p>2</p>
+            </li>
+        </ul>
+    </body>
+    <script type="text/javascript">
+        // querySelector只能选中匹配的第一个元素
+        //document.querySelector('li span p').style.color = 'red';    // 1
+        //document.querySelector('li p').style.color = 'red';    // 1
+
+        //querySelectorAll返回所有匹配项返回一个list
+        var aData = document.querySelectorAll('li p');    //1 2
+        Array.from(aData).forEach((item, index) => {
+            item.style.color = 'blue';
+        });
+    </script>
+</html>

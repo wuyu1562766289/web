@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            canvas {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+            // 将画布的圆点平移
+            oCtx.translate(150, 150);
+            oCtx.rect(0, 0, 50, 50);
+            oCtx.fill();
+            // oCtx.stroke();
+        </script>
+    </body>
+</html>

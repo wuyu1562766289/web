@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <form action="index.html" method="get" id='formId'>
+            <!-- autofocus: 自动获取焦点 -->
+            <!-- placeholder:(占位符) 文本框中的提示信息 -->
+            <!-- required: 必填项 -->
+            <input type="text" name="tx" value="" placeholder="我是提示信息" required autofocus>
+
+            <input type="text" name="" value="">
+
+            <!-- 下拉列表 -->
+            <!-- multiple: 实现多选效果（按住ctrl单击鼠标多选） -->
+            <select multiple>
+                <option value="1">1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+
+            <!-- 下拉输入框 -->
+            <input type="text" name="sel" list="test">
+            <datalist id='test'>
+                <option value="1">111</option>
+                <option value="2">222</option>
+                <option value="3">333</option>
+            </datalist>
+
+            <input type="submit" value="提交">
+        </form>
+
+        <!-- 可以通过form表单的id来实现表单外的内容提交 -->
+        <input type="text" form='formId' name="tx1" value="">
+    </body>
+</html>

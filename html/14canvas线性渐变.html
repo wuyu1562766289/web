@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+        /*     // 创建渐变方案
+            let bgc = oCtx.createLinearGradient(50, 50, 250, 50);
+            // 添加开始颜色（第一个参数为渐变的范围:0~1）
+            bgc.addColorStop(0.1, "yellow");
+            // 添加结束颜色
+            bgc.addColorStop(0.8, "blue");
+            oCtx.strokeStyle = bgc;
+            oCtx.moveTo(50, 50);
+            oCtx.lineTo(250, 50);
+            oCtx.lineWidth = "15";
+            oCtx.stroke(); */
+
+            // 起始点x  起始点y  结束点x  结束点y
+            let bgc = oCtx.createLinearGradient(50, 100, 250, 100);
+            bgc.addColorStop(0, "rgb(125, 250, 122)");
+            bgc.addColorStop(1, "rgb(244, 17, 153)");
+
+            oCtx.strokeStyle = bgc;
+            oCtx.moveTo(50, 100);
+            oCtx.lineTo(250, 100);
+            oCtx.lineWidth = "30";
+            oCtx.stroke();
+        </script>
+    </body>
+</html>

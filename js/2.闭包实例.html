@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+
+    </body>
+    <script type="text/javascript">
+        var ktv = (function KTV() {
+            var nFloorPrice = 1000;
+            var nTotle = 0;
+
+            return {
+                buy: function (nPrice) {
+                    nTotle += nPrice;
+                },
+                pay: function () {
+                    if(nTotle < nFloorPrice) {
+                        console.log(`还差${nFloorPrice - nTotle}元才能满足最低消费！`);
+                    }
+                    else {
+                        console.log('本次消费：' + nTotle + ',欢迎再次光临！');
+                    }
+                },
+                editPrice: function (id, nPrice) {
+                    if(id == 888) {
+                        nFloorPrice = nPrice;
+                    }
+                    else {
+                        console.log('对不起！你没有修改权限。');
+                    }
+                }
+            }
+        })();
+
+    </script>
+</html>

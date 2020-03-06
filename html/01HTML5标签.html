@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            nav {
+                height: 200px;
+                background: red;
+                /* 解决方式一 */
+                /* display: block; */
+            }
+            div {
+                height: 200px;
+                background: black;
+            }
+        </style>
+
+        <!-- 解决方式一 -->
+        <!-- <script type="text/javascript">
+            document.createElement('nav');
+        </script> -->
+
+        <!-- 解决方式二：腻子程序 -->
+        <!-- 只有ie浏览器才会加载该文件 -->
+        <!--[if lt IE 9]>
+            <script type="text/javascript" src="html5shiv.js"></script>
+        <![endif]-->
+
+    </head>
+    <body>
+        <nav>
+            我是导航栏
+        </nav>
+        <div>
+            我也是导航栏
+        </div>
+    </body>
+</html>

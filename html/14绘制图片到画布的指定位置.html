@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            canvas {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height="300"></canvas>
+        <script type="text/javascript">
+            let oCanvas = document.querySelector("canvas");
+            let oCtx = oCanvas.getContext("2d");
+
+            // 将图片绘制到画布的指定区域
+            let img = document.createElement("img");
+                img.src = "../img/qx.jpg";
+
+            // 必须等到图片加载完才能绘制
+            // oCtx.drawImage(img, 100, 100);
+            img.onload = function () {
+                // (图片对象，x，y)：x、y画到哪
+                oCtx.drawImage(img, 100, 100);
+            }
+        </script>
+    </body>
+</html>
