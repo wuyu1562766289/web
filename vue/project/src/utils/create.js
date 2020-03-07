@@ -6,7 +6,7 @@ export default function create(Component, props) {
   const vm = new Vue({
     render(h) {
       // 可以渲染VNode
-      return h(Component, {props});
+      return h(Component, { props });
     }
   }).$mount();  // 更新操作
 

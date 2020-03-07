@@ -1,9 +1,9 @@
 <template>
-<div>
-  <ul>
-    <Item class="item" :model="treeData"></Item>
-  </ul>
-</div>
+  <div>
+    <ul>
+      <Item class="item" :model="treeData"></Item>
+    </ul>
+  </div>
 </template>
 
 <script>

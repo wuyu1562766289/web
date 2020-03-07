@@ -13,31 +13,30 @@
 </template>
 
 <script>
-  export default {
-    name: "Item",
-    props: {
-      model: Object
-    },
-    data() {
-      return {
-        open: false  
+export default {
+  name: "Item",
+  props: {
+    model: Object
+  },
+  data() {
+    return {
+      open: false
+    };
+  },
+  computed: {
+    isFolder() {
+      return this.model.children && this.model.children.length;
+    }
+  },
+  methods: {
+    toggle() {
+      if (this.isFolder) {
+        this.open = !this.open;
       }
-    },
-    computed: {
-      isFolder() {
-        return this.model.children && this.model.children.length;
-      }
-    },
-    methods: {
-      toggle() {
-        if(this.isFolder) {
-          this.open = !this.open;
-        }
-      }
-    },
+    }
   }
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>
