@@ -12,20 +12,23 @@
     <!-- <hr> -->
     <!-- <Tree></Tree> -->
 
-    <VuexTest></VuexTest>
+    <!-- <VuexTest></VuexTest> -->
+    <WVuexTest></WVuexTest>
   </div>
 </template>
 
 <script>
 // import WForm from "./components/form"
 // import Tree from '@/components/tree';
-import VuexTest from '@/components/VuexTest';
+// import VuexTest from '@/components/VuexTest';
+import WVuexTest from '@/components/WVuexTest';
 
 export default {
   components: {
     // WForm,
     // Tree,
-    VuexTest
+    // VuexTest,
+    WVuexTest
   },
 }
 </script>

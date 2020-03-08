@@ -4,7 +4,8 @@ import App from './App.vue'
 import router from './router'
 // import router from './wrouter-test'
 
-import store from './store'
+// import store from './store'
+import store from './wstore'
 
 Vue.config.productionTip = false
 
