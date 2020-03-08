@@ -1,8 +1,9 @@
 <template>
   <div>
     <h3>Vuex Test</h3>
-    <p>{{$store.state.count}}</p>
-    <p>{{$store.getters.score}}</p>
+    <p>{{$store.state.first.count}}</p>
+    <!-- <p>{{$store.getters.score}}</p> -->
+    <p>{{$store.getters['first/score']}}</p>
     <button @click="add">add</button>
     <button @click="asyncAdd">asyncAdd</button>
   </div>
@@ -13,7 +14,7 @@ export default {
   methods: {
     add() {
       // action
-      this.$store.commit("add", 2);
+      this.$store.commit("first/add", 2);
     },
     // asyncAdd() {
     //   // mutations
@@ -21,7 +22,7 @@ export default {
     // }
     async asyncAdd() {
       // mutations
-      const result = await this.$store.dispatch("asyncAdd", 3);
+      const result = await this.$store.dispatch("first/asyncAdd", 3);
       if(result.ok === 1) {
         alert('success！');
       }
