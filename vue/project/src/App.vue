@@ -1,14 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <router-view/> -->
 
-    <comp></comp>
+    <!-- render函数使用 -->
+    <!-- <comp></comp> -->
+    <!-- <WForm></WForm> -->
+    <!-- <hr> -->
+    <!-- <Tree></Tree> -->
+
+    <VuexTest></VuexTest>
   </div>
 </template>
+
+<script>
+// import WForm from "./components/form"
+// import Tree from '@/components/tree';
+import VuexTest from '@/components/VuexTest';
+
+export default {
+  components: {
+    // WForm,
+    // Tree,
+    VuexTest
+  },
+}
+</script>
 
 <style>
 #app {

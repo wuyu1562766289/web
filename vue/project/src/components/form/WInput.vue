@@ -7,8 +7,10 @@
 </template>
 
 <script>
+import emmiter from '@/mixins/emmiter';
 export default {
   inheritAttrs: false, // 避免顶层容器继承属性
+  mixins: [emmiter],
   props: {
     value: {
       type: String,
