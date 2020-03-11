@@ -14,7 +14,7 @@ class VueRouter {
       }
     })
   }
-
+ 
   init() {
     // 绑定浏览器事件
     this.bindEvents();

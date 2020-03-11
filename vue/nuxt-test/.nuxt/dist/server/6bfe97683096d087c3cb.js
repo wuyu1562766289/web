@@ -1,0 +1,1 @@
+exports.ids=[2],exports.modules={87:function(t,e,r){"use strict";r.r(e);var d={},n=r(3);var component=Object(n.a)(d,(function(){var t=this.$createElement;return(this._self._c||t)("div",[this._ssrNode("<h2 data-v-f2510d26>购物车</h2>")])}),[],!1,(function(t){}),"f2510d26","b94824b8");e.default=component.exports}};
