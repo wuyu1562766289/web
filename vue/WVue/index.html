@@ -9,9 +9,12 @@
   <div id="app">
     <p w-text="name"></p>
     <h3 w-text="temp"></h3>
-    <h4 w-html="aa"></h4>
+    <h4 w-html="html"></h4>
     <p>{{name}}</p>
+    <p>{{age}}</p>
     <p><span>aaa</span></p>
+    <input type="text" w-model="name" >
+    <button @click="changeName">click</button>
   </div>
 
   <script src="./compile.js"></script>
@@ -21,18 +24,24 @@
       el: '#app',
       data: {
         name: "wangxing",
-        temp: "我是你的谁？",
+        temp: "text-我是你的谁？",
         age: 18,
         obj: {
           msg: "hello"
         },
-        aa: '<a>html</a>'
+        html: '<button>我是一个小按钮</button>'
       },
       created() {
         setTimeout(() => {
           this.name = "我是你的谁！";
         }, 2500)
-      }
+      },
+      methods: {
+        changeName() {
+          this.name = 'hey,wangxing';
+          this.age = 20;
+        }
+      },
     });
 
     // app.name = "hello world!";
