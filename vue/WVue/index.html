@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p w-text="name"></p>
+    <h3 w-text="temp"></h3>
+    <h4 w-html="aa"></h4>
+    <p>{{name}}</p>
+    <p><span>aaa</span></p>
+  </div>
+
+  <script src="./compile.js"></script>
+  <script src="./wvue.js"></script>
+  <script>
+    let app = new WVue({
+      el: '#app',
+      data: {
+        name: "wangxing",
+        temp: "我是你的谁？",
+        age: 18,
+        obj: {
+          msg: "hello"
+        },
+        aa: '<a>html</a>'
+      },
+      created() {
+        setTimeout(() => {
+          this.name = "我是你的谁！";
+        }, 2500)
+      }
+    });
+
+    // app.name = "hello world!";
+    // app.msg = "你好";
+    // console.log(app.name);
+    // console.log(app.msg);
+    
+    
+  </script>
+</body>
+</html>
