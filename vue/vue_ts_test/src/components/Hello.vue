@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Emit, Watch } from "vue-property-decorator";
+import { State, Action, Mutation } from "vuex-class";
 
 // 类的约束
 // class Feature {
@@ -47,6 +48,16 @@ function getData<T>(): Promise<Result<T>> {
   return new Promise(resolve => resolve({ ok: 1, data }));
 }
 
+
+/**
+  function Component(options: any) {
+    return function(target: Function) {
+     return Vue.extend(options);
+    }
+  }
+  */
+
+
 @Component
 export default class Hello extends Vue {
   // 括号里的是给vue的，下面的给ts
@@ -65,7 +76,7 @@ export default class Hello extends Vue {
   // private features = ["类型注解", "静态类型检测"];
 
   // 3
-  private features: Feature[] = [];
+  // private features: Feature[] = [];
   constructor() {
     super();
     // this.features = [
@@ -96,17 +107,25 @@ export default class Hello extends Vue {
   @Emit()
   private addFeature(event: any) {
     // this.features.push(event.target.value);
-    const feature = { id: this.count + 1, name: event.target.value };
-    this.features.push(feature);
+    // const feature = { id: this.count + 1, name: event.target.value };
+    // this.features.push(feature);
+
+    this.addFeatureAction(event.target.value);
     event.target.value = "";
     // 如果没有返回值，形参是事件参数，否则返回值是
-    return feature;
+    // return feature;
   }
 
   @Watch("features", { deep: true })
   private msgChange(newVal: any, oldVal: any) {
     console.log(newVal, oldVal);
   }
+
+  @State
+  private features!: Feature[];
+  @Action addFeatureAction: any;
+  @Mutation addFeatureMutation: any;
+
 
   // 计算属性可以使用getter、setter实现
   get count() {
