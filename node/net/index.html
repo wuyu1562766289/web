@@ -1,0 +1,17 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  (async () => {
+    // 允许鉴权存在
+    axios.defaults.withCreadentials = true;
+
+    axios.defaults.baseURL = 'http://localhost:3000';
+
+    const res = await axios.post("/users", {
+      headers: {
+        'W-Token': 'wangxing'
+      }
+    });
+    console.log('data', res.data);
+    
+  })
+</script>
