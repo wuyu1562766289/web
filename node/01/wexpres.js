@@ -16,12 +16,14 @@ class Application {
       console.log(url, pathname);
       
 
-      for(const item of router) {
-        const {path, method, handler} = item;
-        if(pathname === path && req.method.toLowerCase() === method) {
-          return handler(req, res);
-        }
-      }
+      // for(const item of router) {
+      //   const {path, method, handler} = item;
+      //   if(pathname === path && req.method.toLowerCase() === method) {
+      //     return handler(req, res);
+      //   }
+      // }
+      return router.find(v => pathname == v.path && req.method.toLowerCase() === v.method)
+                .handler(req, res);
     });
     server.listen(...arguments);
   }
