@@ -7,12 +7,12 @@
 // 添加静态路由
 // # /etc/nginx/sites-enable/taro
 // server {
-// listen 80;
-// server_name taro.josephxia.com;
-// location / {
-// root /root/source/taro-node/dist;
-// index index.html index.htm;
-// }
+//   listen 80;
+//   server_name taro.josephxia.com;
+//   location / {
+//     root / root / source / taro - node / dist;
+//     index index.html index.htm;
+//   }
 // }
 // # 验证Nginx配置
 // nginx -t
