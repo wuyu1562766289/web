@@ -5,33 +5,33 @@
 // apt install nginx
 
 // 添加静态路由
-// # /etc/nginx/sites-enable/taro
+// # /etc/nginx/sites-enable/test
 // server {
 //   listen 80;
-//   server_name taro.josephxia.com;
+//   server_name test.baidu.com;
 //   location / {
-//     root / root / source / taro - node / dist;
+//     root / root / source / test - node / dist;
 //     index index.html index.htm;
 //   }
 // }
 // # 验证Nginx配置
 // nginx -t
 // # 重新启动Nginx
-// service restart nginx
+// service nginx restart
 // nginx -s reload
 
 
 // # / etc / nginx / sites - enable
-// # taro
+// # test
 // server {
 //   listen 80;
-//   server_name taro.josephxia.com;
+//   server_name test.baidu.com;
 //   location / {
-//     root / root / source / taro - node / dist;
+//     root / root / source / test - node / dist;
 //     index index.html index.htm;
 //   }
 //   location ~ \.(gif | jpg | png)$ {
-//     root / root / source / taro - node / server / static;
+//     root / root / source / test - node / server / static;
 //   }
 //   location / api {
 //     proxy_pass http://127.0.0.1:3000;
