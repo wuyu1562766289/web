@@ -1,4 +1,5 @@
 /vue/project/node_modules/
-/vue/vue/node_modules
-/vue/nuxt-test/node_modules
-/node/node_modules
+/vue/vue/node_modules/
+/vue/nuxt-test/node_modules/
+/node/node_modules/
+/node/egg-example/node_modules/
