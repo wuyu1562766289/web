@@ -61,7 +61,7 @@ export default {
     resetCaptcha() {
       this.code.captcha = '/api/user/captcha?' + new Date()
     },
-    handleLogin() {
+    async handleLogin() {
       // 暂时忽略前端认证、密码复杂度认证、再次输入密码是否相同认证
       this.$refs.form.validate(async (valid) => {
         if (valid) {
@@ -71,8 +71,9 @@ export default {
             captcha: this.form.captcha,
             password: md5(this.form.password),
           }
-          const ret = await this.$http.post('/user/login', obj)
-          console.log(ret)
+          const ret = await this.$store.dispatch('user/login', obj);
+          // const ret = await this.$http.post('/user/login', obj)
+          // console.log(ret)
           if(ret.code === 0) {
             localStorage.setItem('token', ret.data.token);
             this.$notify({
@@ -82,6 +83,7 @@ export default {
             setTimeout(() => {
               this.$router.push({path: "/"});
             }, 1000);
+            // this.$http.get('/article/' + this.id)
           }
         }
       })
@@ -92,7 +94,7 @@ export default {
 
 <style lang="scss">
 .email-code {
-  width: 340px;
+  width: 350px;
   position: relative;
   .send-email-btn {
     position: absolute;

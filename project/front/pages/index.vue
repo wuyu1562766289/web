@@ -1,24 +1,30 @@
 <template>
-  <div class="container">
+  <div class="user-container">
     <div>
-      <logo />
+      <h1>文章列表</h1>
+      <ArticleItem v-for="article in articles" :key="article._id" :article="article">
+      </ArticleItem>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+// import Logo from '~/components/Logo.vue'
+import ArticleItem from '~/components/ArticleItem.vue';
 
 export default {
   components: {
-    Logo
+    ArticleItem
+  },
+  data() {
+    return {
+      articles: []
+    }
   },
   async mounted() {
-    const token = localStorage.getItem('token')
-    if (token) {
-      // eg：需要登录才能访问
-      const ret = await this.$http.get('/user/info')
-      console.log(ret)
+    const ret = await this.$http.get('/article');
+    if(ret.code == 0) {
+      this.articles = ret.data;
     }
   }
 }

@@ -76,17 +76,95 @@ class UserController extends BaseController {
 
     if (user) {
       // hash生成
-      const { nickname } = user;
+      const { nickname, _id } = user;
+      console.log(user);
+
       const token = app.jwt.sign({
         nickname,
         email,
-        _id: user._id,
+        _id,
       }, app.config.jwt.secret, {
-        expiresIn: '60s',
+        expiresIn: '10h',
       });
-      this.success({ token, email, nickname });
+      this.success({ token, email, nickname, _id });
+      // this.success('登录成功');
     } else {
       this.error('用户名或密码错误');
+    }
+  }
+
+  async isFollow() {
+    const { ctx } = this;
+    const me = await ctx.model.User.findById(ctx.state.userid);
+    // eslint-disable-next-line eqeqeq
+    const isFollow = !!me.following.find(v => v.toString() == ctx.params.id);
+    this.success({ isFollow });
+  }
+  async follow() {
+    // 把关注的用户id放在following字段中
+    const { ctx } = this;
+    const me = await ctx.model.User.findById(ctx.state.userid);
+    // eslint-disable-next-line eqeqeq
+    const isFollow = !!me.following.find(v => v.toString() == ctx.params.id);
+    if (!isFollow) {
+      me.following.push(ctx.params.id);
+      me.save();
+      this.message('关注成功');
+    } else {
+      this.message('关注失败');
+    }
+  }
+  async unfollow() {
+    // 取消关注
+    const { ctx } = this;
+    const me = await ctx.model.User.findById(ctx.state.userid);
+    // eslint-disable-next-line eqeqeq
+    const index = me.following.map(id => id.toString().indexOf(ctx.params.id));
+    if (index > -1) {
+      me.following.splice(index, 1);
+      me.save();
+      this.message('已取消关注');
+    }
+  }
+
+  async following() {
+    // 加载关注的人
+    const { ctx } = this;
+    const users = await ctx.model.User.findById(ctx.params.id).populate('following');
+    this.success(users.following);
+  }
+  async followers() {
+    // 加载粉丝
+    const { ctx } = this;
+    const users = await ctx.model.User.find({ following: ctx.params.id });
+    this.success(users);
+  }
+  async articleStatus() {
+    const { ctx } = this;
+    const data = await ctx.model.User.findById(ctx.state.userid);
+    const like = !!data.likeArticle.find(id => id.toString() == ctx.params.id);
+    this.success({ like });
+  }
+  async likeArticle() {
+    const { ctx } = this;
+    const data = await ctx.model.User.findById(ctx.state.userid);
+    if (!data.likeArticle.find(id => id.toString() == ctx.params.id)) {
+      data.likeArticle.push(ctx.params.id);
+      data.save();
+      await ctx.model.Article.findByIdAndUpdate(ctx.params.id, { $inc: { like: 1 } })
+      return this.message('点赞成功');
+    }
+    return this.message('您已经点过攒啦~');
+  }
+  async cancellikeArticle() {
+    const { ctx } = this;
+    const data = await ctx.model.User.findById(ctx.state.userid);
+    const index = data.likeArticle.map(id => id.toString()).indexOf(ctx.params.id);
+    if (index > -1) {
+      data.likeArticle.splice(index, 1);
+      data.save();
+      await ctx.model.Article.findByIdAndUpdate(ctx.params.id, { $inc: { like: -1 } });
+      return this.message('已成功取消');
     }
   }
 }

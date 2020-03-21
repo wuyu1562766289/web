@@ -8,7 +8,7 @@ module.exports = ({ app }) => {
     const token = ctx.request.header.authorization.replace('Bearer ', '');
     try {
       const ret = await app.jwt.verify(token, app.config.jwt.secret);
-      console.log('中间件解密token信息：', ret);
+      // console.log('中间件解密token信息：', ret);
       ctx.state.email = ret.email;
       ctx.state.userid = ret._id;
       await next();

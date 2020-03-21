@@ -15,6 +15,8 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "element-ui": "^2.4.11",
+    "loadsh": "0.0.4",
+    "marked": "^0.8.1",
     "md5": "^2.2.1",
     "node-sass": "^4.13.1",
     "nuxt": "^2.0.0",

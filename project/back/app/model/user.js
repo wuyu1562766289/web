@@ -12,7 +12,12 @@ module.exports = app => {
     password: { type: String, required: true, select: false },
     nickname: { type: String, required: true },
     avatar: { type: String, required: false, default: '/user.png' },
-
+    following: {
+      type: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+    },
+    likeArticle: {
+      type: [{ type: Schema.Types.ObjectId, ref: 'Article' }]
+    },
     // 关注用户
   }, { timestamps: true });
   return mongoose.model('User', UserSchema);

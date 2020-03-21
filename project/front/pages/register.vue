@@ -90,7 +90,22 @@ export default {
             nickname: this.form.nickname,
           }
           const ret = await this.$http.post('/user/register', obj)
-          console.log(ret)
+          console.log(ret);
+          if(ret.code === 0) {
+            this.$notify({
+              title: '注册成功',
+              type: 'success'
+            });
+            setTimeout(() => {
+              this.$router.push({path: "/login"});
+            }, 1000);
+          } else {
+            this.$notify({
+              title: '注册失败',
+              type: 'info',
+              message: ret.message
+            });
+          }
         }
       })
     }
