@@ -1,6 +1,9 @@
 import React from 'react';
 import Home from './pages/Home';
 import User from './pages/User';
+import HooksPage from './pages/HooksPage';
+import HooksReducer from './pages/HooksReducer';
+import HooksContext from './pages/HooksContext';
 
 const foo = Com => props => {
   return (
@@ -34,8 +37,11 @@ function App() {
     <div className="App">
       {/* <Home /> */}
       {/* <User /> */}
-      <Child />
-      <Foo />
+      {/* <Child />
+      <Foo /> */}
+      {/* <HooksPage /> */}
+      {/* <HooksReducer /> */}
+      <HooksContext />
     </div>
   );
 }

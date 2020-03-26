@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    Set对象方法：
+      add：添加某个值，返回Set对象本身
+      clear：删除所有键值对，无返回值
+      delete：删除某个键，返回true，如果删除失败，返回false
+      forEach：对每个元素执行指定的操作
+      has：当前Set对象中是否存在某个键，返回布尔值
+    */
+
+    // 数组去重
+    let arr = [1, 2, 3, 4, 4, 2];
+    console.log([...new Set(arr)]);   // [1, 2, 3, 4]
+    console.log(Array.from(new Set(arr)));  // [1, 2, 3, 4]
+
+    // 字符串去重
+    let str = 'abcabcaac';
+    console.log([...new Set(str)]);   // ["a", "b", "c"]
+    console.log([...new Set(str)].join(''));  // abc    
+    console.log([...new Set('abc hello')]); // ["a", "b", "c", " ", "h", "e", "l", "o"]
+
+    // let a = new Set([1,2,3,4]);
+    // let b = new Set([2,3,4,5]);
+    // let c = new Set([...a, ...b]);
+    // console.log([...c]);    // [1, 2, 3, 4, 5]
+    
+    let a = [1,2,3,4];
+    let b = [2,3,4,5];
+    let c = new Set([...a, ...b]);
+    console.log([...c]);    // [1, 2, 3, 4, 5]
+    
+    // 交集
+    let d = a.filter(x => new Set(b).has(x));
+    console.log(d);   // [2,3,4]
+
+    let e = a.concat(b).filter((x,i,arr) => arr.indexOf(x) == -1);
+    console.log(e);
+    
+  </script>
+</body>
+
+</html>
