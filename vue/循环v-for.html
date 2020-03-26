@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="vue.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                let vm = new Vue({
+                    el: '#div1',
+                    data: {
+                        aData: [
+                            {'name': 'wangxing', age: '18'},
+                            {'name': 'zhangsan', age: '25'},
+                            {'name': 'lisi', age: '98'}
+                        ],
+                        oJson: {
+                            '100': {name: 'hello', age: '55'},
+                            '102': {name: 'wangxing', age: '18'},
+                            '103': {name: 'world', age: '66'}
+                        }
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1">
+            <li v-for="value, index in aData">{{index}} 姓名：{{value.name}} 年龄：{{value.age}}</li>
+            <br>
+            <li v-for="val, index in oJson">{{index}} 姓名：{{val.name}} 年龄：{{val.age}}</li>
+        </div>
+    </body>
+</html>

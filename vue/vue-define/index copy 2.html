@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./wvue.js"></script>
+    <script>
+        const app = new WVue({
+            data: {
+                test: "I am test",
+                foo: {
+                    bar: "bar"
+                }
+            }
+        });
+
+        app.$data.test = "hello, wx!";
+        app.$data.foo.bar = "Oh my bar";
+    </script>
+</body>
+</html>

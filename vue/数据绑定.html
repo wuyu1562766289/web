@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="vue.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                let vm = new Vue({
+                    el: '#div1',
+                    data: {
+                        color: '',
+                        styleJson: {
+                            color: '',
+                            'font-size': '40px',
+                            'font-hight': '60px',
+                            width: '300px'
+                        }
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1">
+            <input type="text" v-model="color"><br>
+            <!-- 单向绑定（输出）:{{}} -->
+            <span>{{color}}</span><br>
+            <!-- 双向绑定：v-model -->
+            <span v-bind:title="color">我是span标签</span><br>
+            <!--简写-->
+            <span :title='color'>我是简写</span><br>
+
+            <!--样式绑定用json-->
+            <input type="text" v-model="styleJson.color">
+            <span :style='styleJson'>绑定样式</span>
+        </div>
+    </body>
+</html>

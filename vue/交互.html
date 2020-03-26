@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            new Vue({
+                el: 'body',
+                data: {
+                    
+                },
+                methods: {
+                    /*get: function ()
+                    {
+                        this.$http.get('test1.txt').then(function (res)
+                        {
+                            // 成功打印数据内容
+                            alert(res.data);
+                        }, function (res)
+                        {
+                            // 失败提示404
+                            alert(res.status)
+                        })
+                    }*/
+                    get: function ()
+                    {
+                        this.$http.get('get.php', {
+                            a: 1,
+                            b: 4
+                        }).then(function (res)
+                        {
+                            // 成功打印数据内容
+                            alert(res.data);
+                        }, function (res)
+                        {
+                            // 失败提示404
+                            alert(res.status)
+                        })
+                    },
+                    post: function ()
+                    {
+                        this.$http.post('post.php', {
+                            a: 1,
+                            b: 4
+                        }, {
+                            emulateJSON: true
+                        }).then(function (res)
+                        {
+                            // 成功打印数据内容
+                            alert(res.data);
+                        }, function (res)
+                        {
+                            // 失败提示404
+                            alert(res.status)
+                        })
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="按钮" @click="get()">
+    <input type="button" value="按钮" @click="post()">
+</body>
+</html>
+

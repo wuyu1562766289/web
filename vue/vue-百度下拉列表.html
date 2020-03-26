@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        .gray {
+            background: gainsboro;
+        }
+        .clickSearch {
+            cursor: pointer;
+        }
+        .clickSearch:hover{
+            background-color: powderblue;
+
+        }
+    </style>
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            new Vue({
+                el: 'body',
+                data: {
+                    myData: [],
+                    t1: '',
+                    nowIndex: -1,
+                    bFlag: true
+                },
+                methods: {
+                    get: function (ev)
+                    {
+                        if(ev.keyCode === 13 || ev.keyCode === 38 || ev.keyCode === 40)
+                        {
+                            return;
+                        }
+
+                        //this.$http.jsonp('https://sug.so.360.cn/suggest', {
+                        this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su', {
+                            //word: this.t1
+                            params: {
+                                wd: this.t1     // 输入的关键词
+                            },
+                            jsonp: 'cb'
+                        }/*, {
+                            //jsonp: 'callback'
+                        }*/).then(function (res)
+                        {
+                            this.myData = res.body.s;
+                        }, function (res)
+                        {
+                            alert(res.status);
+                        })
+                    },
+                    moveDown: function ()
+                    {
+                        // 上：38；下：40
+                        this.nowIndex++;
+                        if(this.nowIndex === this.myData.length)
+                        {
+                            this.nowIndex = 0;
+                        }
+                        this.t1 = this.myData[this.nowIndex];
+                    },
+                    moveUp: function ()
+                    {
+                        // 上：38；下：40
+                        this.nowIndex--;
+                        if(this.nowIndex < 0)
+                        {
+                            this.nowIndex = this.myData.length - 1;
+                        }
+                        this.t1 = this.myData[this.nowIndex];
+                    },
+                    open: function ()
+                    {
+                        window.open("https://www.baidu.com/s?wd=" + this.myData[this.nowIndex]);
+                    },
+                    searchData: function (index)
+                    {
+                        this.nowIndex = index;
+                        this.t1 = this.myData[index];
+                        window.open("https://www.baidu.com/s?wd=" + this.myData[this.nowIndex])
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input style="margin: 10px;" type="text" v-model="t1" @keyup="get($event)" @keyup.down="moveDown()" @keyup.up.prevent="moveUp()" @keyup.enter="open()">
+        <ul>
+            <li v-for="value in myData" :class="{gray: bFlag && ($index == nowIndex), clickSearch: true}"  @click="searchData($index)" @mouseover="bFlag = false" @mouseout="bFlag = true">
+                {{value}}
+            </li>
+        </ul>
+        <p v-show="myData.length==0">暂无数据...</p>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            var vm = new Vue({
+                //el: '#box',
+                aa: 11,
+                show: function ()
+                {
+                    alert(1);
+                },
+                data: {
+                    a: 1,
+                    arr: ['apple', 'pear', 'orange', 'tomato']
+                },
+                methods: {
+                    add: function ()
+                    {
+                        this.arr.push('tomato');
+                    }
+                }
+            }).$mount('#box');
+
+            console.log(vm.$el);
+            console.log(vm.$data);
+            console.log(vm.$options.aa);
+            vm.$options.show();
+            vm.$el.style.background = 'red';
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        1
+        <hr>
+        <input type="button" value="add" @click="add">
+        <ul>
+            <li v-for="value in arr" track-by="$index">{{value}}</li>
+        </ul>
+    </div>
+</body>
+</html>

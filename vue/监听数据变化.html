@@ -1,0 +1,52 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            var vm = new Vue({
+                el: '#box',
+                data: {
+                    a: 111,
+                    b: {name: 'wx', age: 26}
+                },
+                methods: {
+
+                }
+            });
+
+            // 浅度监视
+            vm.$watch('a', function ()
+            {
+                alert('数据a发生变化了！');
+            });
+
+            // 深度监视
+            vm.$watch('b', function ()
+            {
+                alert('数据b发生变化了！');
+            }, {deep: true});
+
+            document.onclick = function ()
+            {
+                vm.a = 1;
+                vm.b.name = 'wangxing';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        {{a}}
+        <hr>
+        {{b | json}}
+    </div>
+</body>
+</html>
+

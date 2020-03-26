@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            new Vue({
+                el: '#box',
+                data: {
+                    c: {color: 'red'},
+                    b: {backgroundColor: 'blue'},
+                    json: {
+                        color: 'red',
+                        backgroundColor: 'blue'
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <strong :style="{color: 'red'}">文字。。。</strong>
+        <hr>
+        <strong :style="[c]">文字。。。</strong>
+        <hr>
+        <strong :style="[c, b]">文字。。。</strong>
+        <hr>
+        <strong :style="json">文字。。。</strong>
+    </div>
+</body>
+</html>

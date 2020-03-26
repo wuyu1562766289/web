@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="vue.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                let vm = new Vue({
+                    el: '#div1',
+                    data: {
+                        count: '0',
+                        num: 1
+                    },
+                    methods: {
+                        clickFun: function(){
+                            this.count++;
+                        },
+                        clickFun1: function () {
+                            this.num = this.num * 2;
+                        }
+                    }
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1">
+            <span v-on:click="clickFun">{{count}}</span><br>
+            <!-- 简写 -->
+            <span @click="clickFun1">{{num}}</span>
+        </div>
+    </body>
+</html>

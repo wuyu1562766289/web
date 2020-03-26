@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            new Vue({
+                el: '#box',
+                data: {
+                    msg: "age"
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input type="text" v-model="msg">
+        <br>
+        {{msg}}
+        <br>
+        {{*msg}}
+        <br>
+        {{{msg}}}
+    </div>
+</body>
+</html>

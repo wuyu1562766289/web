@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            new Vue({
+                el: '#box',
+                data: {},
+                methods: {
+                    show: function (ev)
+                    {
+                        //alert(ev.keyCode);
+                        /*if(ev.keyCode === 13)
+                        {
+                            alert('您按下了回车！')
+                        }*/
+                        alert('您按下了回车！');
+
+                        /*
+                        * ①@keyup.13
+                        * ②@keyup.enter
+                        *
+                        * 上、下、 左、 右
+                        * @keyup/keydown.up
+                        * @keyup/keydown.down
+                        * @keyup/keydown.left
+                        * @keyup/keydown.right
+                        * */
+                    },
+                    show2: function ()
+                    {
+                        alert('您按下了上键！');
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <!--<input type="text" @keydown="show($event)">
+        <input type="text" @keyup="show($event)">-->
+        <!--<input type="text" @keyup.13="show($event)">-->
+        <input type="text" @keyup.enter="show($event)">
+        <input type="text" @keyup.up="show2($event)">
+    </div>
+</body>
+</html>

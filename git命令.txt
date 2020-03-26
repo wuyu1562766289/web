@@ -1,0 +1,65 @@
+1. 下载项目文件： git clone https://github.com/wuyu1562766289/test.git
+
+
+2. 设置贡献者：
+git config --global user.name "wuyu1562766289"
+git config --global user.email "wuyu1562766289@live.com"
+查看用户名或邮箱：
+git config --global user.name 
+git config --global user.email 
+查看所有配置：
+git config --list
+3. git的三个区：
+工作区（git status：显示当前状态）
+暂存区
+版本区
+工作区→暂存区：
+添加：git add test.html（按文件名进行添加）
+    git add .(提交所有文件)
+对比：git diff
+撤销：git reset HEAD <file>（从暂存区的修改撤销回工作区）
+删除：git rm <file>(删除暂存区的文件：工作区不存在的才能删除)
+    git rm -f <file>(同时删除工作区和暂存区的文件)
+    git rm --cached <file>(工作区和暂存区同时存在的文件只会删除暂存区的文件，保留工作区文件)
+
+暂存区→版本库：
+添加：git commit（可根据需要在弹出文件中对修改进行一些简单的描述）
+    git commit -m "描述。。。"（直接编辑相应的修改描述）
+对比： ① git diff --cached
+     ② git diff --staged
+撤销上次的提交操作：（合并提交方案）
+git commit -m "描述。。。" --amend(合并之后重新再次一起提交)
+
+工作区→暂存区→版本库：
+添加： git commit -a -m "描述。。。"
+    -a：添加到暂存区
+    -m：添加到版本库
+对比：  git diff master 
+撤销： git checkout -- <file>(将工作区的修改还原为版本区或者暂存区的状态)
+还原： ①git checkout <版本号：可以只拷贝一部分> <file>(将工作区中删除的文件还原回去) 
+    ② git reset --hard <版本号>(还原所有文件到某个版本)
+    ③ git reset --hard HEAD^ (回退到上一个版本)
+    ④ git reset --hard HEAD~2(往前退2个版本)
+    ⑤ git reflog: 查看版本修改记录（记录了每一次版本操作，其中有版本号）
+  git reset --hard <版本号>（回到当前版本）
+
+查看修改记录：
+git log
+
+
+git config  credential.helper store  //不用每次输入账号密码
+
+git status
+git add .
+git commit -m "修改说明"
+git push -u origin master
+
+net start mysql
+show databases;
+
+
+
+
+
+
+

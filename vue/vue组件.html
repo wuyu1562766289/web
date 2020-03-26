@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <aaa>我是标题3</aaa>
+        <br>
+        <my-a>我是标题3</my-a>
+        <br>
+        <my-3>我是标题3</my-3>
+    </div>
+
+    <script>
+        /*
+        * vue组件：
+        *   组件：一个大对象
+        * 定义一个组件：
+        * 1.全局组件
+        *   Vue.extend({
+        *       template: ''
+        *   });
+        * */
+
+        /*var Aaa = Vue.extend({
+            template: '<h3>我是标题3</h3>'
+        });
+        var a = new Aaa();
+        console.log(a);
+        Vue.component('aaa', Aaa);*/
+
+        /*var Aaa = Vue.extend({
+            // 组件里面放数据：data必须是函数的形式，函数必须返回一个对象（json）
+            data: function(){
+                return {
+                    msg: '我是标题^_^'
+                };
+            },
+            methods: {
+                change: function(){
+                    this.msg = 'changed';
+                }
+            },
+            template: '<h3 @click="change">{{msg}}</h3>'
+        });
+        Vue.component('aaa', Aaa);
+
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                bSign: true
+            }
+        });*/
+
+
+        /*局部组件*/
+        /*var Aaa = Vue.extend({
+            data: function ()
+            {
+                return {
+                    msg: 'aaaaaaa'
+                }
+            },
+            template: '<h3>{{msg}}</h3>'
+        });
+
+        new Vue({
+            el: '#box',
+            data: {
+
+            },
+            components: {   // 局部组件
+                'aaa': Aaa,
+                'my-a': Aaa
+            }
+        });*/
+
+
+
+        /*方式3*/
+        /*Vue.component('my-3', {
+            template: '<strong>方式3</strong>'
+        });
+        new Vue({
+            el: '#box'
+        });*/
+        new Vue({
+            el: '#box',
+            components: {
+                'my-3': {
+                    data: function(){
+                        return {msg: 'woshijubude'}
+                    },
+                    methods: {
+                        change: function ()
+                        {
+                            this.msg = 'xiugailewoa!'
+                        }
+                    },
+                    template: '<h2 @click="change">{{msg}}</h2>'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

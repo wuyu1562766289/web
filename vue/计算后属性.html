@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="vue.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            window.onload = function() {
+                let vm = new Vue({
+                    el: '#div1',
+                    data: {
+                        n1: 0,
+                        n2: 0,
+                        family: '',
+                        last: ''
+                    },
+                    // 完整版
+                    computed: {
+                        name: {
+                            get: function() {
+                                return this.family + this.last;
+                            },
+                            set: function(newValue) {
+                                this.family = newValue.charAt(0);
+                                this.last = newValue.substring(1);
+                            }
+                        }
+                    }
+                    /*
+                     计算后数据/属性：并不存在的数据，其实是一个公式（有缓存）
+                        应用：1.频繁使用的复杂公式；
+                             2.需要监控的一个全局状态管理
+                     //不是必须的
+                    */
+                    // 简写（相当于get，不能set）
+                    /*computed: {
+                        test() {
+                            return this.n1 * this.n2;
+                        }
+                    }*/
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1">
+            <!--姓：<input type="number" v-model="n1"><br>
+            名：<input type="number" v-model="n2"><br>
+            {{test}}-->
+            <hr>
+
+            姓：<input type="text" v-model="family"><br>
+            名：<input type="text" v-model="last"><br>
+            姓名：<input type="text" v-model="name">
+        </div>
+    </body>
+</html>

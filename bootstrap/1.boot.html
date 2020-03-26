@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        div [class*=col-]{background: #adadad; border: 1px #31b0d5 solid; color: white; height: 50px;}
+    </style>
+</head>
+<body>
+    <!-- 自适应布局 -->
+    <!--<div class="container-fluid">
+        aaaaaaaa
+    </div>-->
+    <!-- 栅格系统: 共分12列
+                   语法：
+                        col-lg-*
+                        col-md-*
+                        col-sm=*
+                        col-xs-*
+                        可以组合使用(控制分辨率达到不同阈值时换行显示)
+    -->
+    <!-- 阈值：
+              >> 1200 >=
+              >> 992 >=
+              >> 768 >=
+              >> 768 <
+    -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1">col-lg-1</div>
+            <div class="col-lg-11">col-lg-11</div>
+        </div>
+        <!--1200-->
+        <div class="row">
+            <div class="col-lg-4">col-lg-4</div>
+            <div class="col-lg-4">col-lg-4</div>
+            <div class="col-lg-4">col-lg-4</div>
+        </div>
+        <!--992-->
+        <div class="row">
+            <div class="col-md-4">col-md-4</div>
+            <div class="col-md-4">col-md-4</div>
+            <div class="col-md-4">col-md-4</div>
+        </div>
+        <!--768-->
+        <div class="row">
+            <div class="col-sm-4">col-sm-4</div>
+            <div class="col-sm-4">col-sm-4</div>
+            <div class="col-sm-4">col-sm-4</div>
+        </div>
+        <!-- >768-->
+        <div class="row">
+            <div class="col-xs-4">col-xs-4</div>
+            <div class="col-xs-4">col-xs-4</div>
+            <div class="col-xs-4">col-xs-4</div>
+        </div>
+        <!-- 组合 -->
+        <div class="row">
+            <div class="col-lg-4 col-md-6">col-lg-4 col-md-6</div>
+            <div class="col-lg-4 col-md-6">col-lg-4 col-md-6</div>
+            <div class="col-lg-4 col-md-6">col-lg-4 col-md-6</div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-3.1.0.js"></script>
+<script src="js/bootstrap.js"></script>
+</html>

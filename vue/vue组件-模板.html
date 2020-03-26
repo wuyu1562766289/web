@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+
+    <!--方式一
+    <script type="my-ttemplate" id="aaa">
+        <h2 @click="change">{{msg}}</h2>
+        <ul>
+            <li>111</li>
+            <li>222</li>
+            <li>333</li>
+        </ul>
+    </script>-->
+
+    <template id="aaa">
+        <h2 @click="change">{{msg}}</h2>
+        <ul>
+            <li v-for="value in arr">{{value}}</li>
+        </ul>
+    </template>
+
+</head>
+<body>
+    <div id="box">
+        <my-3>我是标题3</my-3>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#box',
+            components: {
+                'my-3': {
+                    data: function(){
+                        return {
+                            msg: 'woshijubude',
+                            arr: ['apple', 'banana', 'orange']
+                        }
+                    },
+                    methods: {
+                        change: function ()
+                        {
+                            this.msg = 'xiugailewoa!'
+                        }
+                    },
+                    // 方式1
+                    //template: '<h2 @click="change">{{msg}}</h2>'
+                    template: '#aaa'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

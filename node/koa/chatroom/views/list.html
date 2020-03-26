@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+    {{each msgs}}
+        <ul>
+            <li>
+                {{$value.username}}
+                {{$value.content}}
+            </li>
+        </ul>
+    {{/each}}
+    </div>
+
+    {{username}}您好，请说话：<input type="text" name="newContent" id="newContent">
+    <button id="btn">发送</button>
+
+    <script>
+        document.getElementById('btn').onclick = function(){
+            var newContent = document.getElementById('newContent').value;
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', '/add');
+            xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+            xhr.send('content=' + newContent);
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    var arr = JSON.parse(xhr.responseText);
+                    var html = '<ul>';
+                        for(var i = arr.length - 1; i >= 0; i--){
+                            html += '<li>' + arr[i].username + ' ' + arr[i].content + '</li>';
+                        }
+                        html += '</ul>';
+                    document.getElementById('box').innerHTML = html;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>响应式工具</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        div [class*=col-] {background: #adadad; border: solid #31b0d5 2px; color: white; height: 50px;}
+        .tip1 {background: #000000; width: 30px; height: 300px; right: 0}
+    </style>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+<body style="height: 2000px;">
+<!--
+    响应式工具：根据不同设备展示或隐藏页面内容
+-->
+    <div class="container">
+        <div class="row">
+            <!-- 在lg以上的分辨率下才显示 -->
+            <div class="col-lg-4 visible-lg-block">col-lg-4</div>
+            <div class="clearfix"></div>
+            <!-- 在阈值为md的情况下才显示 -->
+            <div class="col-lg-4 visible-md-block">col-lg-4</div>
+            <div class="clearfix"></div>
+            <div class="hidden-sm">只在sm阈值下隐藏</div>
+            <div class="clearfix"></div>
+            <div class="hidden-md">只在md阈值下隐藏</div>
+            <!--
+                visible-*-*:
+                    lg  md  sm  xs
+                    blocl  inline  inline-block
+                hidden-*
+            -->
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="container-fluid">
+        <!--
+            pull-right: 右浮动
+            pull-left: 左浮动
+        -->
+        <div class="row"><!--为了清除浮动所以放到了row中-->
+            <div class="tip1 pull-right visible-lg-block affix"></div>
+            <div class="tip1 pull-left"></div>
+        </div>
+        <!--affix: 固定定位-->
+        <div>aaaaaaaaaaa</div>
+    </div>
+
+    <div class="clearfix"></div>
+    <!--打印类-->
+    <div class="container">
+        <div class="row">
+            <div class="visible-print-block">只有在打印状态才会显示出来，网页模式不显示</div>
+            <div class="hidden-print">只有在非打印状态才会显示出来，打印模式不显示</div>
+        </div>
+    </div>
+</body>
+</html>

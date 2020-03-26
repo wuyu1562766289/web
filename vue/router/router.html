@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="vue.js" charset="utf-8"></script>
+        <script src="vue-router.js" charset="utf-8"></script>
+        <style media="screen">
+            .nav-link {color: #666; text-decoration: none;}
+            .router-link-active {font-weight: bold;}
+        </style>
+    </head>
+    <body>
+        <div id="div1">
+            <router-link class="nav-link" to='/user'>买家平台</router-link>
+            <router-link class="nav-link" to='/company'>卖家平台</router-link>
+
+            <!--<a href="#/user">买家平台</a>
+            <a href="#/company">卖家平台</a>-->
+
+            <router-view></router-view>
+        </div>
+    </body>
+    <script src="dest/bundle.js" charset="utf-8"></script>
+</html>

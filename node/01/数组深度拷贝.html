@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            let arr1 = [{a:12},2,3];
+            let arr2 = arr1.concat([]);
+            //console.log(arr2);    // [{a:12}, 2, 3]
+
+            //arr2[0].a++;
+            //console.log(arr1);    // [{a:13}, 2, 3]
+            //console.log(arr2);    // [{a:13}, 2, 3]
+
+            let arr3 = JSON.parse(JSON.stringify(arr1));
+            arr3[0].a++;
+            console.log(arr1);    // [{a:12}, 2, 3]
+            console.log(arr3);    // [{a:13}, 2, 3]
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

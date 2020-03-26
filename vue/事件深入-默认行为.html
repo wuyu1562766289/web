@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            new Vue({
+                el: '#box',
+                data: {},
+                methods: {
+                    show: function (ev)
+                    {
+                        // 右键：@contextmenu
+                        alert(ev.clientX);
+                        //ev.preventDefault();    // 阻止默认行为（右键菜单）
+                        //vue阻止默认行为：@contextmenu.prevent
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="按钮" @contextmenu.prevent="show($event)">
+    </div>
+</body>
+</html>

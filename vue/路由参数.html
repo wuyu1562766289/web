@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="vue.js" charset="utf-8"></script>
+    <script src="vue-router.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="div1">
+        <router-link to="/article/1">文章1</router-link>
+        <router-link to="/article/333">文章2</router-link>
+        <router-link to="/article/999">文章3</router-link>
+        <router-view></router-view>
+    </div>
+</body>
+<script type="text/javascript">
+    let router = new VueRouter({
+        routes: [{
+            // xxx/:x/:x?a=xx
+            path: '/article/:id',
+            component: {
+                template: '<div>文章ID:{{$route.params.id}} 内容：{{$route.params}}</div>',
+                // 2监听路由跳转
+                beforeRouteUpdate(to, from, next) {
+                    if (confirm('如果离开本页，当前页面的修改将丢失。确定离开吗？')) {
+                        next();
+                    }
+                }
+            }
+        }]
+    });
+
+    let vm = new Vue({
+        el: '#div1',
+        router,
+        watch: {
+            // 1监听路由变化
+            $route(newVal, oldVal) {
+                console.log('从：', oldVal);
+                console.log('到：', newVal);
+            }
+        }
+    });
+</script>
+
+</html>

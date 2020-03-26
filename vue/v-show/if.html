@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../vue.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                let vm = new Vue({
+                    el: '#div1',
+                    data: {
+                        show: true
+                    },
+                    methods: {
+                        showFun: function () {
+                            this.show = !this.show;
+                        }
+                    }
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <div id='div1'>
+            <button type="button" @click="showFun" name="button">显示/隐藏</button>
+            <br>
+            <!-- v-show: 隐藏（display: none;） -->
+            <div v-show='show' style="width:200px;height:200px;background:red;boder:20px;">
+
+            </div>
+            <br>
+            <!-- v-if: 直接删除代码 -->
+            <div v-if='show' style="width:200px;height:200px;background:red;">
+
+            </div>
+        </div>
+    </body>
+</html>

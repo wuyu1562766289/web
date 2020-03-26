@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            var vm = new Vue({
+                el: '#box',
+                data: {
+                    a: 1
+                },
+                computed: {
+                    // b为属性，不是方法，值为return后返回的结果
+                    /*b: function ()
+                    {
+                        // 此写法默认调用get
+                        return this.a + 5;
+                    }*/
+                    b: {
+                        get: function ()
+                        {
+                            return this.a + 10;
+                        },
+                        set: function (val)
+                        {
+                            this.a = val;
+                        }
+                    }
+                }
+            });
+
+            console.log(vm.a);
+            document.onclick = function ()
+            {
+                vm.b = 10;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        a => {{a}}
+        <br>
+        b => {{b}}
+    </div>
+</body>
+</html>

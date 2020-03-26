@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="vue.js" charset="utf-8"></script>
+    <script src="vue-router.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            // 1.创建一个路由--路由表
+            let router = new VueRouter({
+                routes: [{
+                        path: '/user',
+                        component: {
+                            // component里的data是一个函数，以returt的形式返回
+                            data() {
+                                return {
+                                    count: 122
+                                };
+                            },
+                            methods: {
+                                fn: function() {
+                                    alert('aaa');
+                                }
+                            },
+                            template: '<div>买家:{{count}}<button type="button" name="button" @click="fn">提交</button></div>'
+                        }
+                    },
+                    {
+                        path: '/company',
+                        component: {
+                            // component里的data是一个函数，以returt的形式返回
+                            data() {
+                                return {
+                                    count: 555
+                                };
+                            },
+                            methods: {
+                                fn: function() {
+                                    alert('bbb');
+                                }
+                            },
+                            template: '<div>卖家:{{count}}<input type="button" value="提交" @click="fn" /></div>'
+                        }
+                    }
+                ]
+            });
+
+            // 2.创建vue对象
+            let vm = new Vue({
+                el: '#div1',
+                router: router
+            })
+        }
+    </script>
+    <style media="screen">
+        .nav-link {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .router-link-active {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <!-- 相对于a标签 -->
+        <router-link class="nav-link" to='/user'>买家平台</router-link>
+        <router-link class="nav-link" to='/company'>卖家平台</router-link>
+
+        <!--<a href="#/user">买家平台</a>
+            <a href="#/company">卖家平台</a>-->
+
+        <!-- 占位符 -->
+        <router-view></router-view>
+    </div>
+</body>
+
+</html>

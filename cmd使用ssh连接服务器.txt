@@ -1,0 +1,11 @@
+// 开启ssh服务
+sudo service ssh --full-restart
+
+// 连接远程服务器
+// ssh 用户名@服务器ip地址 -p 端口号
+ssh wx@127.0.0.1 -p 23
+
+// 端口服务器
+logout 或 Ctrl + D
+
+/mnt/d/web/github/web/React$ 

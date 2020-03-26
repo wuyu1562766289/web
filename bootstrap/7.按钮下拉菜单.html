@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>响应式工具</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        .github-style .btn {font-weight: 900;}
+    </style>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+
+<!--实例-->
+<br><br>
+<div class="container">
+<!--    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Action</a> </li>
+            <li><a href="#">Another action</a> </li>
+            <li><a href="#">Something else here</a> </li>
+            <li><a href="#">Separated link</a> </li>
+        </ul>
+    </div>-->
+
+    <!--不考虑特殊人群-->
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Dropdown
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a> </li>
+            <li><a href="#">Another action</a> </li>
+            <li><a href="#">Something else here</a> </li>
+            <li><a href="#">Separated link</a> </li>
+        </ul>
+    </div>
+
+
+    <br>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    Dropdow
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a> </li>
+                    <li><a href="#">Action</a> </li>
+                    <li><a href="#">Action</a> </li>
+                    <li><a href="#">Action</a> </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="dropdown open pull-right"><!--默认为展开状态--><!--菜单右对齐-->
+                <button class="btn btn-default dropdown-toggle btn-block" type="button" data-toggle="dropdown"><!--铺满整个父级-->
+                    Dropdow
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right"><!--下拉菜单靠右-->
+                    <li><a href="#">Action</a> </li>
+                    <li><a href="#">Action</a> </li>
+                    <li><a href="#">Action</a> </li>
+                    <li><a href="#">Action</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

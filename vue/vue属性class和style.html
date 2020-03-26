@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <style>
+        .red{
+            color: red;
+        }
+        .bg{
+            background: gold;
+        }
+        .blue{
+            color: blue;
+        }
+        .bg2{
+            background: gray;
+        }
+    </style>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            new Vue({
+                el: '#box',
+                data: {
+                    red: 'red',
+                    bg: 'bg',
+                    json: {
+                        blue: false,
+                        bg2: true
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <!--<strong :class="[red]">文字...</strong> red是数据-->
+        <strong :class="[red, bg]">文字。。。</strong>
+        <hr>
+        <strong :class="{blue: true, bg2: false}">文字。。。</strong>
+        <hr>
+        <strong :class="json">文字。。。</strong>
+    </div>
+</body>
+</html>

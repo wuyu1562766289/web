@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="vue.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            let vm = new Vue({
+                el: '#div1',
+                data: {
+                    json: [{
+                            "ID": '2',
+                            name: 'wangxing',
+                            age: '23'
+                        },
+                        {
+                            "ID": '5',
+                            name: 'zhangsan',
+                            age: '28'
+                        },
+                        {
+                            "ID": '6',
+                            name: 'lisi',
+                            age: '15'
+                        },
+                        {
+                            "ID": '9',
+                            name: 'wangwu',
+                            age: '99'
+                        }
+                    ]
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+        <li v-for="item in json" :key="item.ID">姓名：{{item.name}} 年龄：{{item.age}}</li>
+    </div>
+</body>
+
+</html>

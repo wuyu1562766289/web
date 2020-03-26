@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <aaa>
+            <ul slot="slot-ul">
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+            <ol slot="slot-ol">
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ol>
+        </aaa>
+        <hr>
+        <aaa></aaa>
+    </div>
+    <template id="aaa">
+        <h1>xxx</h1>
+        <slot name="slot-ol">这是默认情况</slot>
+        <slot name="slot-ul">这是默认情况2</slot>
+        <p>welcome vue</p>
+    </template>
+
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                a: 'aaa'
+            },
+            components: {
+                'aaa': {
+                    template: '#aaa'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

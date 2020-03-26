@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <aaa></aaa>
+    </div>
+
+    <template id="2">
+        <h1>111</h1>
+        <bbb :my-Msg="msg" :haha="msg2"></bbb>
+    </template>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+
+            },
+            components: {
+                'aaa': {
+                    data: function ()
+                    {
+                        return {
+                            msg: '我是父组件的数据！',
+                            msg2: '我是父组件的数据2！'
+                        }
+                    },
+                    // vue默认情况下：子组件不能访问父组件的数据
+                    /*template: '<h2>我是aaa组件->{{msg}}</h2><bbb :m="msg"></bbb>',
+                    components: {
+                        'bbb': {
+//                            props: {
+//                                'm': String
+//                            },
+                            props: ['m'],
+                            template: '<h2>我是bbb组件--{{m}}</h2>'
+                        }
+                    }*/
+
+                    /*2*/
+                    template: '#2',
+                    components: {
+                        'bbb': {
+                            // 注：html中的“-”用驼峰式来代替
+                            props: ['myMsg', 'haha'],
+                            template: '<h2>{{myMsg}}<br>我是bbb组件--{{haha}}</h2>'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

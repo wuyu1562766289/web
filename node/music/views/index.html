@@ -1,0 +1,168 @@
+﻿{{extend './layout/main.html'}}
+{{block 'content'}}
+     <style type="text/css">
+    #box {
+        background-color: rgba(0, 0, 0, 0.2);
+        width: 300px;
+        height: 360px;
+        margin-top: 10px;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    #box p {
+        padding: 0 15px;
+    }
+
+    #lrc {
+        margin-top: 130px;
+        position: absolute;
+        text-align: center;
+        padding-top: 60px;
+    }
+
+    .gl {
+        color: rgba(11, 243, 231, 0.87);
+        background-color: rgb(248, 78, 197);
+        font-size: 16px;
+    }
+    </style>
+    <div class="container">
+        <div class="page-header">
+            <h1>首页--<small>我的音乐</small></h1>
+        </div>
+        <a href="/music/add" class="btn btn-success">添加音乐</a>
+    </div>
+    <div class="container">
+       <div class="row" style="display: flex;">
+            <div style="flex: 3; margin-right: 10px;">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <th>歌曲标题</th>
+                        <th>时长</th>
+                        <th>歌手</th>
+                        <th>编辑</th>
+                        <th>删除</th>
+                        <th>播放</th>
+                    </thead>
+                    <tbody class="list_container" id="list_container">                        
+                        {{each musics}}
+                        <tr>
+                            <td>{{$value.title}}</td>
+                            <td>{{$value.singer}}</td>
+                            <td>{{$value.time}}</td>
+                            <td><a href="/music/edit-music?id={{$value.id}}">编辑</a></td>
+                            <td><a class="del" href="/music/del-music?id={{$value.id}}">删除</a></td>
+                            <td><span style="cursor:pointer" src="" class="glyphicon glyphicon-play-circle ply" 
+                                file="{{$value.file}}"  
+                                filelrc="{{$value.filelrc}}"></span></td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div style="flex: 2">
+                <p>正在播放音乐:</p>
+                <audio id="audio" autoplay src="" controls="controls">
+                </audio>
+                <div id="box" class="col-md-3">
+                    <div id="lrc">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 2. 解析歌词成为对象
+        function parseLrc(str) {
+            var tempObj = {};
+            // [00:32.43]算不到动如参商
+            // [00: 37.26]与天共争岁月久长 鬓如霜
+            // 1.以换行符切割字符串
+            var lines = str.split('\n');    // 不同系统有不同的换行符
+                                // \r:mac \n:linux \r\n:windows
+            // 2.遍历该数组，以正则来匹配数据，其中获取到时间和歌词
+            var regex = /\[(\d{2})\:(\d{2})\.(\d{2})\](.*)/;
+            // console.log(lines);
+            
+            for(var i = 0; i < lines.length; i++) {
+                var line = lines[i];
+                var result = regex.exec(line);
+                // 如果匹配失败，result = null
+                if(!result) continue;   // 不匹配的跳过
+
+                // console.log(result);
+                var fen = result[1];
+                var miao = result[2];
+                var content = result[4];
+                
+                var key = (fen * 60) + (miao -0);
+                // 3.计算时间作为key，将其与歌词为对象添加属性
+                tempObj[key] = content;
+            }
+            // 4.返回这个对象
+            return tempObj;
+        }
+
+        // 3. 生产不滚动的dom，并留下时间属性作为查找元素的依据
+        function createDOM(obj) {
+            var html = '';
+            for(var time in obj) {
+                html += `<p time="${time}">${obj[time]}</p>`;
+            }
+            $('#lrc').html(html);
+        }
+
+        // 4. 监听滚动歌词的事件，获取秒数，查找p标签，并根据与lrc之间的top差，让lrc向上移动
+        function scroll(obj) {
+            // 歌曲播放事件
+            // audio 的 timeupdate事件：获取e.target.currentTime
+            $('#audio').on('timeupdate', function(e) {                
+                var miao = Math.round(e.target.currentTime);                
+
+                // 判断是否可以滚动
+                if(!obj[miao]) return;
+
+                // 滚动逻辑
+                // 1.根据miao找p标签
+                var p = $('#lrc').find('p[time=' + miao + ']'); // p[time=1]
+                // 2. 吧p标签的top值 - lrc 的top值
+                var minus = $('#lrc').offset().top - p.offset().top;
+                
+                // 3. 将上一步的差值作为lrc向上移动的距离
+                $('#lrc').animate({
+                    top: minus
+                }, 'slow');// 慢慢移动slow
+
+                // 4.给这个p标签添加样式，并移除其他元素的样式
+                p.addClass('gl').siblings().removeClass('gl');
+            }); 
+        }
+
+        // 1. 点击后发起请求获取歌词数据
+        $('.ply').on('click', function() {
+            // 获取url 歌曲 + 歌词
+            var file = $(this).attr('file');
+            var filelrc = $(this).attr('filelrc');
+            $.ajax({
+                url: filelrc,
+                type: 'get',
+                success: function(res) {
+                    // console.log(res);
+                  
+                    // 解析歌词为对象
+                    var lrcObj = parseLrc(res);
+                    // 生成不滚动的dom对象 留下time标记
+                    createDOM(lrcObj);
+                    // console.log(lrcObj);
+                                  
+                    // 开始滚动
+                    scroll(lrcObj);
+                    
+                    // 播放歌曲
+                    $('audio').attr('src', file);
+                }
+            })
+        })
+    </script>
+{{/block}}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    列表：
+    <ul>
+        {{each students}}
+        <li>
+            {{$value.name}}
+            <img src="{{$value.imgName}}" width="100px" height="100px">
+            距离我{{$value.dist.calculated}}米
+        </li>
+        {{/each}}
+    </ul>
+</body>
+
+</html>

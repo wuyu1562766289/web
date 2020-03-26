@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            new Vue({
+                el: '#box',
+                data: {
+
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        {{'123'}}
+        <br>
+        {{'welcome'|uppercase}} <!--转换为大写-->
+        <br>
+        {{'WELCOME'|lowercase}} <!--转换为小写-->
+        <br>
+        {{'WELCOME' | lowercase | capitalize}} <!--首字母大写-->
+        <br>
+        {{12 | currency}}
+        <br>
+        {{12 | currency '￥'}}   <!--中间空格隔开-->
+    </div>
+</body>
+</html>

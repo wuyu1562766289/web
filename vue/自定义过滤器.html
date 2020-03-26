@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.1.0.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            Vue.filter('toDou', function (input)
+            {
+                return input < 10 ? '0' + input : input;
+            });
+
+            Vue.filter('date', function (vl)
+            {
+                var oData = new Date(vl);
+
+                function toDouble(value)
+                {
+                    return value < 10 ? '0' + value : value;
+                }
+
+                return oData.getFullYear() + '-' + toDouble(oData.getMonth() + 1) + '-' + toDouble(oData.getDate())
+                        + " " + toDouble(oData.getHours()) + ':' + toDouble(oData.getMinutes())
+                        + ":" + toDouble(oData.getSeconds());
+            });
+
+            new Vue({
+                el: '#box',
+                data: {
+                    a: 9,
+                    b: Date.now()
+                },
+                methods: {
+
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        {{a | toDou}}
+        <hr>
+        {{b | date}}
+    </div>
+</body>
+</html>
+

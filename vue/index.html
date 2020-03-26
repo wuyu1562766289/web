@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function ()
+        {
+            new Vue({
+                el: '#box',     //选择器
+                data: {
+                    msg: 'welcome vue',
+                    msg2: 12,
+                    array: [1,2,3,4],
+                    json: {a: 'ww', b: 'wx', c: 'xx'},
+                    a: true
+                },
+                methods: {
+                    show: function ()
+                    {
+                        alert(1);
+                    },
+                    add: function ()
+                    {
+                        this.array.push(5);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+       <input type="text" v-model="msg">
+        <input type="text" v-model="msg">
+        {{msg}}
+        <br>
+        {{msg2}}
+        <br>
+        <ul>
+            <li v-for="value in array">
+                {{value}} {{$index}}
+            </li>
+        </ul>
+        {{array}}
+
+        <hr>
+        <ul>
+            <li v-for="value in json">
+                {{value}} {{$index}} {{$key}}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(v, k) in json">
+                {{v}} {{$index}} {{k}}
+            </li>
+        </ul>
+
+        <hr>
+        <div id="btn">
+            <input type="button" value="按钮" v-on:click="show()">
+            <input type="button" value="添加" v-on:click="add()">
+            <input type="button" value="添加" v-on:mouseout="add()">
+        </div>
+        <hr>
+
+        <div id="bg">
+            <input type="button" value="隐藏" v-on:click="a=false">
+            <input type="button" value="显示" v-on:click="a=true">
+            <div style="width:100px; height:100px; background:red;" v-show="a">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

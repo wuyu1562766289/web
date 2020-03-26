@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="vue.js" charset="utf-8"></script>
+    <script src="vue-router.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="div1">
+        <router-link to='/user'>买家平台</router-link>
+        <router-link to='/company'>卖家平台</router-link>
+        <router-view><router-view>
+    </div>
+</body>
+<script type="text/javascript">
+    // 1.创建路由表
+    let router = new VueRouter({
+        routes: [{
+            path: '/user',
+            component: {
+                template: '<div>买家</div>'
+            }
+        }, {
+            path: '/company',
+            component: {
+                template: '<div>卖家</div>'
+            }
+        }]
+    });
+
+    let vm = new Vue({
+        el: '#div1',
+        router: router
+    })
+</script>
+
+</html>

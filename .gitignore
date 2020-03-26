@@ -1,3 +1,9 @@
+/vue/element-form/node_modules/
+/vue/project-cube/node_modules/
+/vue/router/node_modules/
+/vue/shopping-cart/node_modules/
+/vue/vue-ts/node_modules/
+/vue/vuex/node_modules/
 /vue/project/node_modules/
 /vue/vue/node_modules/
 /vue/nuxt-test/node_modules/

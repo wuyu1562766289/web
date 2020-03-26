@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="vue.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            window.onload = function() {
+                let vm = new Vue({
+                    el: '#div1',
+                    data: {
+                        name: 'wangxing',
+                        age: ''
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1">
+            姓名：{{name}}<br>
+            <input type="text" v-model="age"><br>
+            <input type="text" v-model="age"><br>
+            <span>{{age}}</span>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>响应式工具</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        .github-style .btn {font-weight: 900;}
+    </style>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+    <div class="container">
+        <!--独立按钮-->
+        <input type="button" value="按钮1" class="btn btn-primary">
+        <input type="button" value="按钮2" class="btn btn-primary">
+        <input type="button" value="按钮3" class="btn btn-primary">
+    </div>
+
+    <br>
+    <div class="btn-group">
+        <!--按钮组-->
+        <input type="button" value="按钮1" class="btn btn-primary">
+        <input type="button" value="按钮2" class="btn btn-primary">
+        <input type="button" value="按钮3" class="btn btn-primary">
+    </div>
+
+    <br>
+    <!--btn-group-justified: 按钮组端点对齐(适应父容器)-->
+    <div class="btn-group btn-group-justified">
+        <!--按钮组-->
+        <a href="#" class="btn btn-primary">按钮1</a>
+        <a href="#" class="btn btn-primary">按钮2</a>
+        <a href="#" class="btn btn-primary">按钮3</a>
+    </div>
+    <br>
+
+    <!--btn-group-justified: 按钮组端点对齐(适应父容器)-->
+    <div class="btn-group btn-group-justified">
+        <!--按钮组-->
+        <!--button和input必须加个父级才能生效-->
+        <div class="btn-group">
+            <input type="button" value="按钮1" class="btn btn-primary">
+        </div>
+        <div class="btn-group">
+            <input type="button" value="按钮2" class="btn btn-primary">
+        </div>
+        <div class="btn-group">
+            <input type="button" value="按钮3" class="btn btn-primary">
+        </div>
+    </div>
+
+    <!--btn-group-justified: 按钮组端点对齐(适应父容器)-->
+    <div class="btn-group btn-group-justified">
+        <!--按钮组-->
+        <!--button和input必须加个父级才能生效-->
+        <div class="btn-group">
+            <button class="btn btn-primary">按钮1</button>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-primary">按钮2</button>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-primary">按钮3</button>
+        </div>
+    </div>
+
+
+    <!--btn-group-vertical: 纵向布局按钮组-->
+    <br><br>
+    <!--btn-group-justified: 按钮组端点对齐(适应父容器)-->
+    <div class="btn-group-vertical btn-group-lg">
+        <!--按钮组-->
+        <a href="#" class="btn btn-primary">按钮1</a>
+        <a href="#" class="btn btn-primary">按钮2</a>
+        <a href="#" class="btn btn-primary">按钮3</a>
+    </div>
+    <div class="btn-group-vertical btn-group-md">
+        <!--按钮组-->
+        <a href="#" class="btn btn-primary">按钮1</a>
+        <a href="#" class="btn btn-primary">按钮2</a>
+        <a href="#" class="btn btn-primary">按钮3</a>
+    </div>
+    <br><br>
+    <!--加上一个向下的箭头-->
+    <a href="#" class="btn btn-primary">按钮1<span class="caret"></span> </a>
+    <button class="btn btn-primary">按钮<span class="caret"></span> </button>
+
+    <div class="btn-group">
+        <a href="#" class="btn btn-primary">按钮</a>
+        <a href="#" class="btn btn-primary"><span class="caret"></span></a>
+    </div>
+    <!--dropdown: 箭头向下   dropup：箭头向上-->
+    <div class="btn-group dropdown">
+        <a href="#" class="btn btn-primary">按钮</a>
+        <a href="#" class="btn btn-primary"><span class="caret"></span></a>
+    </div>
+    <div class="btn-group dropup">
+        <a href="#" class="btn btn-primary">按钮</a>
+        <a href="#" class="btn btn-primary"><span class="caret"></span></a>
+    </div>
+
+    <!--实例-->
+    <br><br>
+<div class="container">
+    <div class="github-style">
+        <div class="btn-group btn-group-sm">
+            <button class="btn btn-default active"><span class="glyphicon glyphicon-eye-open">
+            </span> Which <span class="caret"></span></button>
+            <button class="btn btn-default">3,066</button>
+        </div>
+        <div class="btn-group btn-group-sm">
+            <button class="btn btn-default active"><span class="glyphicon glyphicon-star">
+            </span> Unstar <span class="caret"></span></button>
+            <button class="btn btn-default">36,296</button>
+        </div>
+        <div class="btn-group btn-group-sm">
+            <button class="btn btn-default active"><span class="glyphicon glyphicon-eye-open">
+            </span> fork <span class="caret"></span></button>
+            <button class="btn btn-default">3,258</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
