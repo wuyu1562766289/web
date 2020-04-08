@@ -12,10 +12,10 @@ export default class FormPage extends Component {
 
         <Form>
           <FormItem label="姓名">
-            <Input prefix={<Icon type="user" />} />
+            <Input />
           </FormItem>
           <FormItem label="密码">
-            <Input type="password" prefix={<Icon type="lock" />} />
+            <Input type="password" />
           </FormItem>
           <FormItem>
             <Button type="primary">提交</Button>
