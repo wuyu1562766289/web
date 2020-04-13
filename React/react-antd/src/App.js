@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import HockPage from './pages/HocPage';
 import FormPage from './pages/FormPage';
+import FormPageDecorators from './pages/FormPageDecorators';
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
         </a>
       </header> */}
       {/* <HockPage /> */}
-      <FormPage />
+      {/* <FormPage /> */}
+      <FormPageDecorators />
     </div>
   );
 }

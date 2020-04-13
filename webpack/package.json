@@ -1,0 +1,17 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "description": "推荐局部安装，不同项目可以使用不同版本;\r 全局安装会造成版本指定，如果多个项目依赖不同版本，会造成构建失败。\r webpack4 安装：`npm i webpack webpack-cli -D`",
+  "main": "index.js",
+  "dependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
