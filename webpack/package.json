@@ -4,12 +4,22 @@
   "description": "推荐局部安装，不同项目可以使用不同版本;\r 全局安装会造成版本指定，如果多个项目依赖不同版本，会造成构建失败。\r webpack4 安装：`npm i webpack webpack-cli -D`",
   "main": "index.js",
   "dependencies": {
+    "autoprefixer": "^9.7.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.5.2",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.2.0",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.1.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "webpack"
+    "test": "webpack",
+    "dev": "webpack --config webpack.dev.config.js"
   },
   "keywords": [],
   "author": "",
