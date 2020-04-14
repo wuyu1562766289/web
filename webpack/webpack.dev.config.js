@@ -3,6 +3,7 @@
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = {
@@ -52,7 +53,9 @@ module.exports = {
       // 处理less
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "postcss-loader", "less-loader"]
+        // use: ["style-loader", "css-loader", "postcss-loader", "less-loader"]
+        // 不用插入style的方式，提取出一个单独的css文件
+        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "less-loader"]
       },
       // 处理字体
       {
@@ -66,6 +69,8 @@ module.exports = {
       },
     ]
   },
+  // 创建打包后的代码和源码的映射关系，便于开发过程中快速定位错误。生成环境建议使用none
+  devtool: "source-map",
   plugins: [
     // 根据html模板生成html文件
     new HtmlWebpackPlugin({
@@ -73,6 +78,10 @@ module.exports = {
       filename: "wx.html"
     }),
     // 构建前先清理当前已存在文件
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    // 将css提取成一个单独的文件
+    new MiniCssExtractPlugin({
+      filename: "[name]_[chunkhash:8].css"
+    })
   ]
 }

@@ -16,7 +16,9 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mini-css-extract-plugin": "^0.9.0"
+  },
   "scripts": {
     "test": "webpack",
     "dev": "webpack --config webpack.dev.config.js"
