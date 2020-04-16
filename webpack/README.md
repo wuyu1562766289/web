@@ -1,4 +1,4 @@
-- 官⽅方⽹网站：https://webpack.js.org/
+- 官⽅方⽹网站：<https://webpack.js.org/>
 
 # webpack 使用
 
@@ -234,7 +234,7 @@ plugins: [
 
 在 dev 模式中，默认开启，可以在配置文件`devtool:"none"`设置关闭
 
-devtool 的介绍：https://webpack.js.org/configuration/devtool#devtool
+devtool 的介绍：<https://webpack.js.org/configuration/devtool#devtool>
 
 eval: 速度最快,使用 eval 包裹模块代码
 

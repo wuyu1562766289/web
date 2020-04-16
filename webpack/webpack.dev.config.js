@@ -70,7 +70,7 @@ module.exports = {
     ]
   },
   // 创建打包后的代码和源码的映射关系，便于开发过程中快速定位错误。生成环境建议使用none
-  devtool: "source-map",
+  devtool: "cheap-module-eval-source-map",
   plugins: [
     // 根据html模板生成html文件
     new HtmlWebpackPlugin({
@@ -83,5 +83,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name]_[chunkhash:8].css"
     })
-  ]
+  ],
+  devServer: {
+    constentBase: "./build",
+    port: 8080,
+    open: true
+  }
 }
