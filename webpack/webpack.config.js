@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   // webpack执行入口
@@ -82,7 +83,9 @@ module.exports = {
     // 将css提取成一个单独的文件
     new MiniCssExtractPlugin({
       filename: "[name]_[chunkhash:8].css"
-    })
+    }),
+    // html热更新，webpack自带的一个插件
+    new webpack.HtmlWebpackPlugin()
   ],
   devServer: {
     contentBase: "./build",

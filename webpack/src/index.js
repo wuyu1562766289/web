@@ -17,11 +17,16 @@
 // root.append(img);
 
 
-// !mock数据
+// // !mock数据
 
-import axios from "axios";
+// import axios from "axios";
 
-// axios.get("http://localhost:8090/api/info").then(res => {
-axios.get("/api/info").then(res => {
-  console.log(res);
-})
+// // axios.get("http://localhost:8090/api/info").then(res => {
+// axios.get("/api/info").then(res => {
+//   console.log(res);
+// })
+
+let btn = document.createElement("button");
+btn.innerHTML = "新增";
+document.body.appendChild(btn);
+
