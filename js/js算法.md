@@ -1,6 +1,6 @@
-- Excel 编号转换
+# Excel 编号转换
 
-1. 数字转字母：
+### 1. 数字转字母：
 
 ```js
 numToString() {
@@ -23,7 +23,7 @@ numToString() {
 }
 ```
 
-2. 字母转数字：
+### 2. 字母转数字：
 
 ```js
 stringToNum() {

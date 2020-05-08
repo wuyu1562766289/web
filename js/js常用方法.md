@@ -376,3 +376,172 @@ ajax("/data/test.json", "get")
   .then((res) => console.log(res))
   .catch((err) => console.log(err));
 ```
+
+# 防抖实现
+
+```js
+const input1 = document.querySelector("input");
+
+// let timer = null;
+// input1.addEventListener('keyup', function() {
+//   if(timer) {
+//     clearTimeout(timer);
+//   }
+
+//   timer = setTimeout(function() {
+//     console.log(input1.value);
+//     timer = null;
+//   }, 500);
+// })
+
+function debounce(fn, delay = 500) {
+  let timer = null;
+
+  return function () {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, arguments);
+      timer = null;
+    }, delay);
+  };
+}
+
+input1.addEventListener(
+  "keyup",
+  debounce(function (e) {
+    // console.log(e);
+    console.log(e.target.value);
+  }, 600)
+);
+```
+
+# 节流实现
+
+```js
+const box = document.querySelector("#box");
+
+// let timer = null;
+// box.addEventListener('drag', function(e) {
+//   // console.log(e.offsetX, e.offsetY);
+//   if(timer) {
+//     return;
+//   }
+//   timer = setTimeout(() => {
+//     console.log(e.offsetX, e.offsetY);
+//     timer = null;
+//   }, 100);
+// });
+
+function throttle(fn, delay = 100) {
+  let timer = null;
+
+  return function () {
+    if (timer) {
+      return;
+    }
+
+    timer = setTimeout(() => {
+      fn.apply(this, arguments);
+      timer = null;
+    }, delay);
+  };
+}
+
+box.addEventListener(
+  "drag",
+  throttle(function (e) {
+    console.log(e.offsetX, e.offsetY);
+  }),
+  300
+);
+```
+
+# Array
+
+```js
+// 纯函数：1.不改变原数组（没有副作用）；
+//        2.返回一个数组；
+// concat
+// map
+// filter
+// slice
+
+// 非纯函数
+// splice
+
+// const res = [10, 20, 30].map(parseInt);
+// console.log(res);   //  [10, NaN, NaN]
+
+// 多维数组转一维数组
+function flat(arr) {
+  // 验证arr中是否还有深层数组
+  const isDeep = arr.some((item) => item instanceof Array);
+  if (!isDeep) {
+    return arr;
+  }
+
+  const res = Array.prototype.concat.apply([], arr);
+  //递归
+  return flat(res);
+}
+
+const test = flat([1, 2, 3, [4, 5, [6, 7, [8, 9]]], 10]);
+console.log(test);
+```
+
+# 深度比较
+
+```js
+// 全相等（深度）
+function isObject(obj) {
+  return typeof obj === "object" && obj !== null;
+}
+
+function isEqual(obj1, obj2) {
+  if (!isObject(obj1) || !isObject(obj2)) {
+    // 值类型（注：参与equal的一般不会是函数）
+    return obj1 === obj2;
+  }
+
+  // 两个都是对象或数组，而且不相等
+  let obj1Keys = Object.keys(obj1);
+  let obj2Keys = Object.keys(obj2);
+  if (obj1Keys.length !== obj2Keys.length) {
+    return false;
+  }
+
+  // 递归比较
+  for (let key in obj1) {
+    let res = isEqual(obj1[key], obj2[key]);
+    if (!res) {
+      return false;
+    }
+  }
+
+  // 全相等
+  return true;
+}
+
+let obj1 = {
+  a: 100,
+  b: 200,
+  c: {
+    x: 100,
+    y: 200,
+  },
+};
+
+let obj2 = {
+  a: 100,
+  b: 200,
+  c: {
+    x: 100,
+    y: 200,
+    z: 300,
+  },
+};
+
+console.log(isEqual(obj1, obj2));
+```
