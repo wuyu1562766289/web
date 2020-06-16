@@ -5,6 +5,7 @@ import HockPage from './pages/HocPage';
 import FormPage from './pages/FormPage';
 import DialogPage from './pages/DialogPage';
 import ReduxPage from './pages/ReduxPage';
+import MyReduxPage from './pages/MyReduxPage';
 // import FormPageDecorators from './pages/FormPageDecorators';
 
 function App() {
@@ -31,7 +32,9 @@ function App() {
 
       {/* <DialogPage /> */}
 
-      <ReduxPage />
+      {/* <ReduxPage /> */}
+
+      <MyReduxPage />
     </div>
   );
 }
