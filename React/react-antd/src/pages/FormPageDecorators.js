@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Form, Input, Button } from 'antd'
 const FormItem = Form.Item;
 
+
+@Form.create()
 class FormPageDecorators extends Component {
   submit = () => {
     console.log("submit", this.state);
@@ -30,4 +32,4 @@ class FormPageDecorators extends Component {
   }
 }
 
-export default Form.create()(FormPageDecorators);
+export default FormPageDecorators;
