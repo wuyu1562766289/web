@@ -1,0 +1,5 @@
+/.vscode/
+/antd/node_modules/
+/react-antd/node_modules/
+/reactbase/node_modules/
+/react-component/node_modules/

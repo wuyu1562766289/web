@@ -35,6 +35,13 @@ export default class ReduxPage extends Component {
   static = () => {
     store.dispatch({ type: "others" })
   }
+  asyAdd = () => {
+    store.dispatch(dispatch => {
+      setTimeout(() => {
+        dispatch({ type: "add" });
+      }, 1000);
+    });
+  }
 
   render() {
     console.log("store:", store);
@@ -46,6 +53,7 @@ export default class ReduxPage extends Component {
         <button onClick={this.add}>add</button>
         <button onClick={this.minus}>minus</button>
         <button onClick={this.static}>static</button>
+        <button onClick={this.asyAdd}>asyAdd</button>
       </div >
     )
   }
