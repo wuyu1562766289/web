@@ -38,6 +38,14 @@ module.exports = override(
   },
 ```
 
+### `npm install redux --save`
+redux使用：
+  1. 需要一个store来存储数据
+  2. store里的reducer初始化state并定义state修改规则
+  3. 通过dispatch一个action来提交对数据的修改
+  4. action提交到reducer函数里，根据传入的action的type，返回新的state
+
+
 In the project directory, you can run:
 
 ### `npm start`

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function f1(arg) {
+      console.log("f1", arg);
+      return arg;
+    }
+    function f2(arg) {
+      console.log("f2", arg);
+      return arg;
+    }
+    function f3(arg) {
+      console.log("f3", arg);
+      return arg;
+    }
+
+    function compose(...functions) {
+      return functions.reduce((a, b) => (...args) => a(b(...args)));
+    }
+    // console.log(compose(f1, f2, f3)("test"));
+
+    // // Building-blocks to use for composition
+    // const double = x => x + x;
+    // const triple = x => 3 * x;
+    // const quadruple = x => 4 * x;
+
+    // // Function composition enabling pipe functionality
+    // const pipe = (...functions) => input => functions.reduce(
+    //   (acc, fn) => fn(acc),
+    //   input
+    // );
+
+    // // Composed functions for multiplication of specific values
+    // const multiply6 = pipe(double, triple);
+    // const multiply9 = pipe(triple, triple);
+    // const multiply16 = pipe(quadruple, quadruple);
+    // const multiply24 = pipe(double, triple, quadruple);
+
+    // // Usage
+    // console.log(multiply6(6)); // 36
+    // console.log(multiply9(9)); // 81
+    // console.log(multiply16(16)); // 256
+    // console.log(multiply24(10)); // 240
+
+    // const test = (...functions) => input => functions.reduce((acc, fn) => acc(fn), input);
+    // console.log(test(double, triple, quadruple)(10));
+
+
+    
+    function add() {
+      var args = [...arguments];
+      var fn = function () {
+        args.push(...arguments);
+        return add.apply(null, args)
+      };
+      fn.toString = function () {
+        return args.reduce(function (a, b) {
+          return a + b;
+        });
+      };
+      return fn
+    }
+    console.log(add(1)(1, 2, 3)(2))
+  </script>
+</body>
+
+</html>
