@@ -6,6 +6,7 @@ import FormPage from './pages/FormPage';
 import DialogPage from './pages/DialogPage';
 import ReduxPage from './pages/ReduxPage';
 import MyReduxPage from './pages/MyReduxPage';
+import ReactReduxPage from './pages/ReactReduxPage';
 // import FormPageDecorators from './pages/FormPageDecorators';
 
 function App() {
@@ -34,7 +35,9 @@ function App() {
 
       {/* <ReduxPage /> */}
 
-      <MyReduxPage />
+      {/* <MyReduxPage /> */}
+
+      <ReactReduxPage />
     </div>
   );
 }
