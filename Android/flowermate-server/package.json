@@ -1,0 +1,49 @@
+{
+  "name": "flowermate-server",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "egg": {
+    "declarations": true
+  },
+  "dependencies": {
+    "baidu-aip-sdk": "^2.4.5",
+    "cls-hooked": "^4.2.2",
+    "crypto-js": "^3.1.9-1",
+    "egg": "^2.26.0",
+    "egg-rest": "^2.1.0",
+    "egg-scripts": "^2.12.0",
+    "egg-sequelize": "^5.2.1",
+    "egg-validate": "^2.0.2",
+    "fs-extra": "^8.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa2-swagger-ui": "^2.16.0",
+    "lodash": "^4.17.15",
+    "sequelize": "^5.21.3",
+    "sqlite3": "^4.1.1",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "autod": "^3.1.0",
+    "autod-egg": "^1.1.0",
+    "egg-bin": "^4.14.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --port=9999 --title=egg-server-flowermate",
+    "stop": "egg-scripts stop --title=egg-server-flowermate",
+    "dev": "egg-bin dev --port=9999",
+    "debug": "egg-bin debug",
+    "lint": "eslint .",
+    "autod": "autod"
+  }
+}
