@@ -1,0 +1,4 @@
+name: wang
+description: a dart library
+dependencies:
+  http: ^0.12.1
