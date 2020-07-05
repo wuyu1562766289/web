@@ -27,3 +27,5 @@
 ### 13. 左右移动当前打开的文件选项卡：Ctrl+shift+PageUp/PageDown
 
 ### 15. 快速选中光标所在位置单词：Ctrl+D
+
+### 16. 运行当前编辑窗口的代码：Ctrl+Alt+N
