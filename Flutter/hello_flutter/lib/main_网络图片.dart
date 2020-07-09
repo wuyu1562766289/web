@@ -41,11 +41,22 @@ class _WXHomeContentState extends State<WXHomeContent> {
 
   @override
   Widget build(BuildContext context) {
-//    return Icon(Icons.pets, size: 100, color: Colors.amber);
-//    return Icon(IconData(0Xe91d, fontFamily: "MaterialIcons"), size: 100, color: Colors.amberAccent);
-    // 1. 使用Text时需将16进制转换为Unicode编码；
-    // 2. 需要设置对应的字体
-    return Text("\ue91d", style: TextStyle(fontSize: 100, fontFamily: "MaterialIcons", color: Colors.amber));
+    return Image(
+      image: NetworkImage(imageURL),
+      width: 200,
+      height: 100,
+      // 显示效果（填充）
+      fit: BoxFit.fitHeight,  // 高度一定，宽度自适应
+      // 图片位置
+//      alignment: Alignment.center,
+      // (x,y)范围：-1 1
+      alignment: Alignment(0, -2),
+      // 颜色混入
+      color: Colors.red,
+      colorBlendMode: BlendMode.colorDodge,
+      // 重复
+      repeat: ImageRepeat.repeatX,
+    );
   }
 }
 

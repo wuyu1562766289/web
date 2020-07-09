@@ -41,11 +41,15 @@ class _WXHomeContentState extends State<WXHomeContent> {
 
   @override
   Widget build(BuildContext context) {
-//    return Icon(Icons.pets, size: 100, color: Colors.amber);
-//    return Icon(IconData(0Xe91d, fontFamily: "MaterialIcons"), size: 100, color: Colors.amberAccent);
-    // 1. 使用Text时需将16进制转换为Unicode编码；
-    // 2. 需要设置对应的字体
-    return Text("\ue91d", style: TextStyle(fontSize: 100, fontFamily: "MaterialIcons", color: Colors.amber));
+    // 占位图
+    // Flutter会对网络图片进行缓存处理：1000张 100M
+    return FadeInImage(
+      // 设置过渡效果
+      fadeOutDuration: Duration(milliseconds: 500),
+      fadeInDuration: Duration(milliseconds: 500),
+      placeholder: AssetImage("assets/images/yz.jpg"),
+      image: NetworkImage(imageURL),
+    );
   }
 }
 

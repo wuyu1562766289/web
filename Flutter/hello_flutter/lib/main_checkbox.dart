@@ -120,7 +120,7 @@ class WXContentBodyState extends State<WXContentBody> {
             }),
         Text(
           "同意协议",
-          style: TextStyle(fontSize: 25),
+          style: TextStyle(fontSize: 30),
         )
       ],
     ));
