@@ -1,4 +1,9 @@
+import 'dart:math';
+
+import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/service/http_request.dart';
 
 main() => runApp(MyApp());
 
@@ -12,21 +17,38 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class WXHomePage extends StatelessWidget {
+class WXHomePage extends StatefulWidget {
+  @override
+  _WXHomePageState createState() => _WXHomePageState();
+}
+
+
+class _WXHomePageState extends State<WXHomePage> {
+  // 初始会滚动到300的地方
+  ScrollController controller = ScrollController(initialScrollOffset: 300);
+  bool _isShow = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    controller.addListener(() {
+//      print("监听到滚动了...: ${controller.offset}");
+      setState(() {
+        // 滚动到1000以上时显示回到顶部按钮
+        _isShow = controller.offset >= 1000;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("基础Widget")
+        title: Text("列表")
       ),
-      body: WXHomeContent(),
-      // 浮动按钮
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => print("FloatingActionButton"),
-      ),
-      // 设置浮动按钮的位置
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      body: WXHomeContent()
     );
   }
 }
@@ -37,15 +59,35 @@ class WXHomeContent extends StatefulWidget {
 }
 
 class _WXHomeContentState extends State<WXHomeContent> {
-  final imageURL = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594311264573&di=bce49e68afa4f4193571aba7fe06c248&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201702%2F12%2F20170212161218_mZtEx.thumb.700_0.jpeg";
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    /*
+    // 发送网络请求
+    // 1. 创建Dio对象
+    final dio = Dio();
+    // 2. 发送网络请求
+    dio.get("https://httpbin.org/get").then((value) {
+      print(value);
+    });
+    dio.post("https://httpbin.org/post").then((value) {
+      print(value);
+    });
+    */
+
+    HttpRequest.request("/get", params: {"name": "hello"}).then((value) {
+      print(value);
+    }).catchError((err) {
+      print(err);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-//    return Icon(Icons.pets, size: 100, color: Colors.amber);
-//    return Icon(IconData(0Xe91d, fontFamily: "MaterialIcons"), size: 100, color: Colors.amberAccent);
-    // 1. 使用Text时需将16进制转换为Unicode编码；
-    // 2. 需要设置对应的字体
-    return Text("\ue91d", style: TextStyle(fontSize: 100, fontFamily: "MaterialIcons", color: Colors.amber));
+    return Container();
   }
 }
+
 
