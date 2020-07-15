@@ -1,0 +1,15 @@
+// webpack  ./code/webpack_test/01_module/main.js -o ./code/webpack_test/01_module/build.js
+const path = require('path');
+module.exports = {
+    // 入口
+    entry: {
+        // 可以有多个入口，也可以有一个，如果有一个就默认从这个入口开始分析
+        'main': './code/webpack_test/01_module/main.js'
+    },
+    output: {
+        path: path.resolve(path.resolve('./code/webpack_test/01_module')),
+        filename: 'build.js'
+    },
+    watch: false,    //文件监视改动 自动产出build.js
+    mode: 'production'
+}

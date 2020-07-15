@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+    </div>
+    <script>
+        var subCom = {
+            template: `
+                <div></div>
+            `
+        };
+        Vue.component('subCom');
+
+
+        var Test = {
+            template: `
+                <div id="test">
+                <button ref="btn">我是第一个按钮</button>
+                <button ref="btn">我是第二个按钮</button>
+                <button ref="btn2">我是第三个按钮</button>
+                <subCom ref="sub">我是全局组件</subCom>
+            </div>
+            `,
+            components:{
+                subCom
+            },
+            data() {
+                return {
+                    
+                }
+            },
+            mounted() {
+                // 如果是给便签绑定ref属性，那么this.$refs.xxx获取的是原生js的dom对象
+                // 如果是给组件绑定的ref属性 那么this.$refs.xxx获取的是组件对象
+                // ref属性值不能重名
+                console.log(this.$refs.btn);
+                console.log(this.$refs.btn2);
+                console.log(this.$refs.sub);
+            }
+        };
+
+        new Vue({
+            el: '#app',
+            template: '<Test></Test>',
+            data() {
+                return {
+                    
+                }
+            },
+            components: {
+                Test
+            }
+        })
+    </script>
+</body>
+</html>

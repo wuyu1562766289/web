@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <script>
+        // 需求：input输入框获取焦点
+
+        var Test = {
+            template: `
+                <div id="test">
+                    <input type="text" v-show='isShow' ref='input' />                    
+                </div>
+            `,
+            data() {
+                return {
+                    isShow: false
+                }
+            },
+            mounted() {
+                this.isShow = true;
+                // this.$refs.input.focus();    // 不生效
+
+                // $nextTick是在DOM更新循环结束之后执行延迟回调，在修改数据之后使用$nextTick可以在回调中获取到更新后的DOM
+                this.$nextTick(function(){
+                    this.$refs.input.focus();
+                })
+            }
+        };
+
+        new Vue({
+            el: '#app',
+            template: '<Test></Test>',
+            data() {
+                return {
+
+                }
+            },
+            components: {
+                Test
+            }
+        })
+    </script>
+</body>
+
+</html>

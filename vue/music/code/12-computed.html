@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=4, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li{
+            margin: 20px 20px;
+            padding: 10px 5px;
+            border-radius: 8px;
+        }
+        ul li.active{
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">        
+        <ul>
+            <audio :src="getCurrentSongSrc" autoplay controls></audio>
+            <li v-for="(item, index) in music" :class='{active: index==currentIndex}' @click='clickHandler(index)'>
+                <h3>{{item.name}}</h3>
+                <p>歌手：{{item.song}}</p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var music = [
+            {id: 1, name: '一念尘埃', song: '陈洁仪', songSrc: '../music/陈洁仪 - 一念尘埃.flac'},
+            {id: 2, name: '雪倾城', song: '毛泽少', songSrc: '../music/毛泽少 - 雪倾城.flac'},
+            {id: 3, name: '今后我与自己流浪', song: '张碧晨', songSrc: '../music/张碧晨 - 今后我与自己流浪.flac'},
+            {id: 4, name: '来不及勇敢', song: '周深', songSrc: '../music/周深 - 来不及勇敢.flac'}
+        ];
+
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    music,
+                    currentIndex: 0
+                }
+            },
+            computed: {
+                getCurrentSongSrc(index) {
+                    return this.music[this.currentIndex].songSrc;
+                }
+            },
+            methods: {
+                clickHandler(val){
+                    this.currentIndex = val;
+                }
+            },
+        })
+    </script>
+</body>
+</html>

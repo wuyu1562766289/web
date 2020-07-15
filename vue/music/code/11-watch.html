@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="" v-model="msg">
+        <button @click='array[0].name="world"'>改变</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: function() {
+                return {
+                    msg: '',
+                    array: [{name: 'wx'}]
+                }
+            },
+            // watch监听单个属性 基本数据类型 简单监视 复杂数据类型深度监视
+            watch: {
+                msg: function(newValue, old) {
+                    // console.log(newValue, old);
+                    if(newValue === 'hello') {
+                        console.log('hello出来了');                        
+                    }                    
+                },
+                // 监听复杂数据类型（object array） 深度监视
+                array: {
+                    deep: true,     // 深度监视
+                    handler: function(newValue, old){
+                        console.log(newValue[0].name);                        
+                    }                    
+                }
+            }
+        });
+    </script>
+</body>
+</html>

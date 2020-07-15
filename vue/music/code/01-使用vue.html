@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 1.引包 -->
+<script src="../node_modules/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <h3>{{msg}}</h3>
+        <h4>{{msg2}}</h4>
+        <p>{{ {name: 'wendie'} }}</p>
+        <p>{{1 > 2 ? '真的' : '假的'}}</p>
+    </div>
+    <script>
+        // MVVM Model View ViewModel
+
+        // 2.创建实例化vue对象
+        // 插值模板语法{{}}  react:{}  angular{{}}
+        new Vue({
+            el: '#app',
+            template: ``,
+            data: function() {
+                return {
+                    msg: '大家好！',
+                    msg2: 1==1
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

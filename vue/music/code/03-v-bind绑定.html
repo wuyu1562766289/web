@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .po{
+            color: brown;
+        }
+        .active{
+            color: aqua;
+        }
+    </style>
+</head>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<body>
+    <div id="div"></div>
+    <script>
+        new Vue({
+            // v-bind可以简化为：
+            // v-on可以简化为@
+            el: '#div',
+            template: `
+                <div>
+                    <!-- <p class="po" v-bind:class='msg'>bind绑定</p> -->
+                    <p class="po" v-bind:class='{active:isRed}'>bind绑定</p>
+                    <button v-on:click="changeColor">切换字体颜色</button>
+                </div>
+            `,
+            data(){
+                return {
+                    // msg: 'active'
+                    isRed: true
+                }
+            },
+            methods: {
+                changeColor() {
+                    this.isRed = !this.isRed;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

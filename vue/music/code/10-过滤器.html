@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        // 全局过滤器
+        Vue.filter('myReverse', function(value, arg) {
+            return arg + ' ' + value.split('').reverse().join('');
+        });
+
+
+        /* 
+            过滤器的作用： 对当前的数据添油加醋
+
+            在组件内部用filters:{
+                过滤器的名字：function(value) {
+                    // 内部一定要return
+                }
+
+                调用过滤器：数据属性 | 过滤器的名字
+            }
+        */
+
+        var App = {
+            data() {
+                return {
+                    price: 0,
+                    msg: 'hello filter'
+                }
+            },
+            template: `
+               <div>
+                    <input type="number" name="price" v-model="price" />
+                    <h3>{{price | myCurrentcy}}</h3>
+                    <h4>{{msg | myReverse('hey')}}</h4>
+                </div>
+            `,
+            filters: {
+                myCurrentcy: function (value) {
+                    return '当前价格为：' + value + '￥';
+                }
+            }
+        };
+
+        new Vue({
+            el: '#app',
+            components: {
+                App
+            },
+            template: '<App />'
+        })
+    </script>
+</body>
+
+</html>

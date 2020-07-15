@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        文件上传客户端的处理：
+            1.文件上传必须表单提交；
+            2.必须是post方式提交；
+            3.表单属性：enctype="multipart/form-data";
+            4.input type="file";
+     -->
+    <form action="4.php" method="POST" enctype="multipart/form-data">
+        照片：<input type="file" name="photoFile"><br>
+        <input type="submit" value="开始上传" style="margin: 10px 0 0 50px">
+    </form>
+</body>
+</html>

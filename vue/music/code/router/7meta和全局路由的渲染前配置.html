@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        Vue.use(VueRouter);
+
+        var Home = {
+            template: `
+                <div>
+                    我是首页
+                </div>
+            `
+        };
+        var Blog = {
+            template: `
+                <div>
+                    我是博客
+                </div>
+            `
+        };
+        var Login = {
+            template: `
+            <div>
+                <input type="text" v-model='name' />
+                <input type="password" v-model='pwd' />
+                <input type="button" @click="loginFun" value="登录" />
+            </div>
+        `,
+        data() {
+            return {
+                name: '',
+                pwd: ''
+            }
+        },
+        methods: {
+            loginFun(){
+                localStorage.setItem('user', {name: this.name, pwd: this.pwd});
+
+                // 编程式导航
+                this.$router.push({name: 'Blog'});
+            }
+        },
+        };
+
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: '/',
+                    redirect: '/home'
+                },
+                {
+                    path: '/home',
+                    component: Home
+                },
+                {
+                    path: '/blog',
+                    name: 'Blog',
+                    component: Blog,
+                    // 给未来路由 做权限控制的 全局路由守卫来做参照条件
+                    meta: {
+                        //表明用户访问该组件时需要登录
+                        auth: true
+                    }
+                },
+                {
+                    path: '/login',
+                    component: Login
+                }
+            ]
+        });
+        var App = {
+            template: `
+                <div>
+                    <!-- 声明式导航 -->
+                    <router-link to="/home">首页</router-link>
+                    <router-link to="/blog">我的博客</router-link>
+                    <router-link to="/login">登录</router-link>
+                    <a href="javascript:void(0);" @click='clear'>退出</a>
+                    <router-view></router-view>
+                </div>
+            `,
+            methods: {
+                clear() {
+                    localStorage.removeItem('user');
+                    this.$router.push('/login');
+                }
+            },
+        };
+
+        router.beforeEach((to, from, next) => {
+            console.log(to);
+            console.log(from);
+
+            if(to.meta.auth) {
+                // 表示用户点击了该链接 该用户未登录 需要登录判断跳转到登录页面
+                if(localStorage.getItem('user')) {
+                    // 不为空放行
+                    next();
+                } else {
+                    // 需要登录
+                    next({
+                        path: '/login'
+                    });
+                }
+            }
+
+            next(); 
+        });
+
+        new Vue({
+            el: '#app',
+            template: '<App />',
+            router: router,
+            components: {
+                App
+            }
+        });
+    </script>
+</body>
+</html>

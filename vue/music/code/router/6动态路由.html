@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1.先引入核心插件 -->
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        // 声明组件
+        var Timeline = {
+            template: `
+            <div id='timeline'>
+                <router-link :to='{name:"comDesc", params: {id: "andorid"}}'>安卓</router-link>
+                <router-link :to='{name:"comDesc", params: {id: "frontend"}}'>前端</router-link>
+                <!-- 路由组件的出口 -->
+                <router-view></router-view>
+            </div>`,
+            created() {
+                // console.log(this.$route);
+            }
+        };
+        var Pins = {
+            template: `<div>我是沸点</div>`,
+            created() {
+                // console.log(this.$route);
+            }
+        };
+        var comDesc = {
+            data() {
+                return {
+                    msg: ''
+                }
+            },
+            template: `
+                <div>
+                    {{msg}}
+                </div>
+            `,
+            created() {
+                this.msg = '安卓';
+            },
+            watch: {
+                '$route' (to, from) {
+                    console.log(to);
+                    console.log(from);
+                    let data = {'andorid': '安卓', 'frontend': '前端'};
+                    this.msg = data[to.params.id];
+                }
+            },
+        }
+
+        // 3.创建路由对象
+        var router = new VueRouter({
+            // 4.配置路由对象
+            routes: [
+                // 路由匹配规则
+                {
+                    // 动态路由参数 以冒号开头
+                    path: '/timeline',
+                    // name: 'timeline',
+                    component: Timeline,
+                    children: [
+                        {
+                            path: '/timeline/:id',
+                            component: comDesc,
+                            name: 'comDesc'
+                        }
+                    ]
+                },
+                {
+                    path: '/pins',
+                    // name: 'pins',
+                    component: Pins
+                }
+            ]
+        });
+
+        // 抛出两个全局的组件 router-link router-view
+        // 抛出了两个对象$router $route(路由信息对象)挂载到了Vue实例化对象
+
+        var App = {
+            template: `
+                <div>
+                    <!-- router-link默认渲染成a标签，to默认被渲染成href属性 -->
+                    <router-link to='/timeline'>首页</router-link>
+                    <router-link to='/pins'>沸点</router-link>
+
+                    <!-- 路由组件的出口 -->
+                    <router-view></router-view>
+                </div>
+            `
+        };
+
+        new Vue({
+            el: '#app',
+            router: router,     // 5.将配置好的路由对象关联到vue实例化对象中
+            template: `<App />`,
+            components: {
+                App
+            }
+        });
+    </script>
+</body>
+
+</html>
