@@ -118,15 +118,18 @@ class WXHomeMovieItem extends StatelessWidget {
   }
   // 2.2.2 评分处理
   Widget buildContentInfoRating() {
-    return Row(
-      children: <Widget>[
-        WXStarRating(
-          rating: movie.rating,
-          size: 20
-        ),
-        SizedBox(width: 8),
-        Text("${movie.rating}", style: TextStyle(fontSize: 16))
-      ],
+    // FittedBox: 自适应大小，默认占用剩余最大空间，若显示不足会自动缩放
+    return FittedBox(
+      child: Row(
+        children: <Widget>[
+          WXStarRating(
+            rating: movie.rating,
+            size: 20
+          ),
+          SizedBox(width: 8),
+          Text("${movie.rating}", style: TextStyle(fontSize: 16))
+        ],
+      ),
     );
   }
   // 2.2.3 影片类型及导演主演介绍处理
