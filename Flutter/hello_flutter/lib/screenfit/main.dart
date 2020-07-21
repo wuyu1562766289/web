@@ -1,5 +1,6 @@
 import 'dart:ui';
-
+import './extension/double_extension.dart';
+import './extension/int_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/screenfit/size_fit.dart';
 
@@ -54,8 +55,10 @@ class WXHomePage extends StatelessWidget {
       ),
       body: Center(
           child: Container(
-            width: WXSizeFit.setPx(200),
-            height: WXSizeFit.setRpx(400),
+//            width: WXSizeFit.setPx(200),
+            width: 200.0.px,
+//            height: WXSizeFit.setRpx(400),
+            height: 400.rpx,
             color: Colors.red,
             alignment: Alignment.center,
             child: Text("我是内容", style: TextStyle(fontSize: 40 * WXSizeFit.rpx))
