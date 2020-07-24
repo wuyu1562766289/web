@@ -3,6 +3,43 @@ import 'package:gourment/core/model/category_model.dart';
 import 'package:gourment/core/services/json_parse.dart';
 import 'package:gourment/core/extension/int_extension.dart';
 
+import 'home_category_item.dart';
+
+class WXHomeScreenContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // 适用于不需要经常刷新加载数据
+    return FutureBuilder<List<WXCategoryModel>> (
+      // 异步请求数据
+      future: WXJsonParse.getCategoryDate(),
+      builder: (ctx, snapshot) {
+        // 还没有数据则转圈显示
+        if(!snapshot.hasData) return Center(child: CircularProgressIndicator());
+        if(snapshot.hasError) return Center(child: Text("请求数据失败！"));
+
+        final _categories = snapshot.data;
+
+        return GridView.builder(
+          itemCount: _categories.length,
+          padding: EdgeInsets.all(20.px),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 20.px,
+            mainAxisSpacing: 20.px,
+            // 宽高比
+            childAspectRatio: 1.5
+          ),
+          itemBuilder: (ctx, index) {
+            return WXHomeCategoryItem(_categories[index]);
+          }
+        );
+      },
+    );
+  }
+}
+
+/*
+
 class WXHomeScreenContent extends StatefulWidget {
   @override
   _WXHomeScreenContentState createState() => _WXHomeScreenContentState();
@@ -17,7 +54,7 @@ class _WXHomeScreenContentState extends State<WXHomeScreenContent> {
     super.initState();
 
     // 加载数据
-    JsonParse.getCategoryDate().then((value) {
+    WXJsonParse.getCategoryDate().then((value) {
       setState(() {
         _categories = value;
       });
@@ -37,29 +74,11 @@ class _WXHomeScreenContentState extends State<WXHomeScreenContent> {
         childAspectRatio: 1.5
       ),
       itemBuilder: (ctx, index) {
-        final bgColor = _categories[index].destColor;
-
-        return Container(
-          decoration: BoxDecoration(
-            color: bgColor,
-            borderRadius: BorderRadius.circular(12),
-            // 颜色渐变
-            gradient: LinearGradient(
-              colors: [bgColor.withOpacity(.5), bgColor]
-            )
-          ),
-          // 会与decoration冲突，写到decoration里面
-//        color: Colors.greenAccent,
-          alignment: Alignment.center,
-          child: Text(
-            _categories[index].title,
-            style: Theme.of(context).textTheme.display2.copyWith(
-              // 粗体
-              fontWeight: FontWeight.bold
-            )
-          )
-        );
+        return WXHomeCategoryItem(_categories[index]);
       }
     );
   }
 }
+*/
+
+

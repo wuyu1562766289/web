@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gourment/ui/pages/home/home_drawer.dart';
 import 'package:gourment/ui/pages/main/init_item.dart';
 import 'package:gourment/ui/size_fit.dart';
 
@@ -17,6 +18,7 @@ class _WXMainScreenState extends State<WXMainScreen> {
     WXSizeFit.init();
 
     return Scaffold(
+      drawer: WXHomeDrawer(),
       body: IndexedStack(
         index: _currentIndex,
         children: pages,

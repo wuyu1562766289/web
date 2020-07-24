@@ -4,7 +4,7 @@ class WXAppTheme {
   // 共有属性
   static const double smallFontSize = 16;
   static const double normalFontSize = 20;
-  static const double largeFontSize = 24;
+  static const double largeFontSize = 26;
 
   // 普通模式
   static final Color norTextColors = Colors.red;
@@ -23,7 +23,7 @@ class WXAppTheme {
     buttonTheme:
         ButtonThemeData(height: 24, minWidth: 10, buttonColor: Colors.yellow),
     // 6. Card主题
-    cardTheme: CardTheme(color: Colors.blue, elevation: 40),
+    cardTheme: CardTheme(color: Colors.white, elevation: 40),
     // 7. text主题
     textTheme: TextTheme(
       // 默认字体大小为14
@@ -37,7 +37,10 @@ class WXAppTheme {
   static final ThemeData darkTheme = ThemeData(
     primarySwatch: Colors.grey,
     textTheme: TextTheme(
-      body1: TextStyle(fontSize: 20, color: Colors.green)
+      // 默认字体大小为14
+      display1: TextStyle(fontSize: smallFontSize),
+      display2: TextStyle(fontSize: normalFontSize),
+      display3: TextStyle(fontSize: largeFontSize)
     )
   );
 }

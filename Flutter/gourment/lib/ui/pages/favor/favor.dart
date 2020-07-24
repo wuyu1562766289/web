@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:gourment/ui/pages/favor/favor_content.dart';
 
-class WXFavorScreen extends StatefulWidget {
-  @override
-  _WXFavorScreenState createState() => _WXFavorScreenState();
-}
-
-class _WXFavorScreenState extends State<WXFavorScreen> {
+class WXFavorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("收藏"),
+        title: Text("我的收藏"),
       ),
-      body: Center(child: Text("收藏")),
+      body: Center(
+        child: WXFavorContent(),
+      ),
     );
   }
 }
+

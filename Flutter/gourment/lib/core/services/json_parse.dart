@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:gourment/core/model/category_model.dart';
 
-class JsonParse {
+class WXJsonParse {
   static Future<List<WXCategoryModel>> getCategoryDate() async {
     // 1. 加载json文件
     final jsonString = await rootBundle.loadString("assets/json/category.json");

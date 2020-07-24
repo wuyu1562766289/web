@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:gourment/ui/pages/home/home_app_bar.dart';
 import 'package:gourment/ui/pages/home/home_content.dart';
+import 'package:gourment/core/extension/int_extension.dart';
+import 'package:gourment/ui/pages/home/home_drawer.dart';
 
 class WXHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("美食广场"),
-      ),
+      appBar: WXHomeAppBar(context),
       body: WXHomeScreenContent(),
+//      drawer: WXHomeDrawer()
     );
   }
 }
