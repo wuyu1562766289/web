@@ -12,16 +12,30 @@ const input1 = document.querySelector('input');
 //   }, 500);  
 // })
 
-function debounce(fn, delay = 500) {
-  let timer = null;
+// function debounce(fn, delay = 500) {
+//   let timer = null;
 
-  return function () {
-    if (timer) {
-      clearTimeout(timer);
-    }
-    timer = setTimeout(() => {
-      fn.apply(this, arguments);
-      timer = null;
+//   return function () {
+//     if (timer) {
+//       clearTimeout(timer);
+//     }
+//     timer = setTimeout(() => {
+//       fn.apply(this, arguments);
+//       timer = null;
+//     }, delay);
+//   }
+// }
+
+const debounce = (fn, delay = 500) => {
+  let timmer = null;
+
+  return (...arg) => {
+    // if(timmer) {
+    //   clearTimeout(timmer);
+    // }
+    timmer && clearTimeout(timmer);
+    timmer = setTimeout(() => {
+      fn.apply(this, arg);
     }, delay);
   }
 }

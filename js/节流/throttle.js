@@ -13,17 +13,31 @@ const box = document.querySelector('#box');
 // });
 
 
-function throttle(fn, delay = 100) {
-  let timer = null;
+// function throttle(fn, delay = 100) {
+//   let timer = null;
 
-  return function() {
-    if(timer) {
-      return;
-    }
+//   return function() {
+//     if(timer) {
+//       return;
+//     }
 
-    timer = setTimeout(() => {
-      fn.apply(this, arguments);
-      timer = null;
+//     timer = setTimeout(() => {
+//       fn.apply(this, arguments);
+//       timer = null;
+//     }, delay);
+//   }
+// }
+
+const throttle = (fn, delay = 1000) => {
+  let flag = true;
+
+  return (...arg) => {
+    if(!flag) return;
+    flag = false;
+
+    setTimeout(() => {
+      fn.apply(this, arg);
+      flag = true;
     }, delay);
   }
 }

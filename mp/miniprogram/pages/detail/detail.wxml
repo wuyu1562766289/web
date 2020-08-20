@@ -1,0 +1,9 @@
+<!--miniprogram/pages/detail/detail.wxml-->
+<view>
+  <text>图书展示</text>
+  <view wx:for="{{books}}" wx:key="*this">
+    <text>{{item.title}}</text>
+    <image mode="aspectFit" lazy-load="true" src="{{item.image}}"></image>
+    <text>{{item.summary}}</text>
+  </view>
+</view>
